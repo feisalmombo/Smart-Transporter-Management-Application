@@ -1,0 +1,110 @@
+@extends('layouts.app')
+
+@section('title', 'BodyTypes')
+
+@section('content')
+
+
+<div class="col-lg-12">
+	<h1 class="page-header">All BodyTypes</h1>
+</div>
+<section class="content">
+<div class="row">
+	<div class="col-lg-12">
+		@include('msgs.success')
+		<div class="panel panel-default">
+			<div class="panel-heading">
+                List of Bodytypes
+                <?php if(Auth::user()->can('create_bodytype')){?>
+                <a href="{{ url('/view-bodytypes/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add Bodytypes</a>
+                <?php }?>
+
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				@if(!empty($bodytypes))
+
+                <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>S/N</th>
+                      <th>BodyType Name</th>
+
+                      <?php if(Auth::user()->can('edit_bodytype')){?>
+                      <th>Edit</th>
+                      <?php }?>
+
+                      <?php if(Auth::user()->can('delete_bodytype')){?>
+                      <th>Delete</th>
+                      <?php }?>
+
+                      <th>Duration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            @foreach($bodytypes as $key=>$bodytype)
+                            <tr class="odd gradeX">
+                                    <td>{{ $key + 1}}</td>
+                                    <td>{{ $bodytype->body_type_name}}</td>
+
+                                    <?php if(Auth::user()->can('edit_bodytype')){?>
+                                    <td>  <a href="{{ url('/view-bodytypes/'.$bodytype->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a></td>
+                                    <?php }?>
+
+
+                                    <?php if(Auth::user()->can('delete_bodytype')){?>
+                                    <td>
+                                        <a href='#{{ $bodytype->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
+                                        <div class="modal fade" id="{{ $bodytype->id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        <h4 class="modal-title"><strong>Delete</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete BodyType? <h9 style="color: blue;">{{ $bodytype->body_type_name }}</h9>
+                                                    </div>
+                                                    <form action="/view-bodytypes/{{ $bodytype->id  }}" method="POST" role="form">
+
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">NO</button>
+
+                                                            <button type="submit" class="btn btn-danger">Yes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <?php }?>
+
+                                    {{--  <td>{{ \Carbon\Carbon::parse($bodytype->created_at)->diffForHumans() }}</td>  --}}
+                                    <td>{{date("F jS, Y", strtotime($bodytype->created_at))}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                  </table>
+                </div>
+				@else
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>No New BodyTypes found</strong>
+				</div>
+				@endif
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+
+</section>
+<!-- /.row -->
+
+@endsection
