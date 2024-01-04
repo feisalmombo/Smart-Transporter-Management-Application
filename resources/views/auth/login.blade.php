@@ -46,10 +46,10 @@
                 <form class="login100-form validate-form"method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
 
-                    {{-- <span class="login100-form-logo">
+                    <span class="login100-form-logo">
                         <i class="zmdi zmdi-local-grocery-se"></i>
-                    </span> --}}
-                    <img class="img-responsive center-block center"  src="{{asset('temp/images/tls-final.png')}}" alt="stma" style="margin-bottom: 6%; margin-top: 2%;  float:center">
+                    </span>
+                    {{-- <img class="img-responsive center-block center"  src="{{asset('temp/images/tls-final.png')}}" alt="stma" style="margin-bottom: 6%; margin-top: 2%;  float:center"> --}}
 
 
                     {{-- <span class="login100-form-title p-b-3 p-t-4">

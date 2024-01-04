@@ -47,15 +47,15 @@
 
                     <h8 style="text-align: center;">@include('msgs.success')</h8>
 
-                    {{-- <span class="login100-form-logo">
+                    <span class="login100-form-logo">
                         <i class="zmdi zmdi-local-grocery-se"></i>
                     </span>
 
-                    <span class="login100-form-title p-b-3 p-t-4">
-                        TLS LTD
+                    {{-- <span class="login100-form-title p-b-3 p-t-4">
+                        STMA
                     </span> --}}
 
-                    <img class="center"  src="{{asset('temp/images/tls-final.png')}}" alt="tls" style="margin-bottom: 6%; margin-top: 2%;">
+                    {{-- <img class="center"  src="{{asset('temp/images/tls-final.png')}}" alt="stma" style="margin-bottom: 6%; margin-top: 2%;"> --}}
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter first name{{ $errors->has('first_name') ? ' has-error' : '' }}">
 
