@@ -12,10 +12,10 @@
 </section>
 @endif
 
-@if(Auth::user()->hasRole('customer'))
+{{-- @if(Auth::user()->hasRole('customer'))
 <section class="content-header">
         <h1 style="font-family:Titillium Web, sans-serif">
-          Welcome To Smart Cargo Movers (SCM)
+          Welcome To Smart Transporter Management Application(STMA)
       </h1>
       <br>
       <div class="row">
@@ -33,13 +33,40 @@
     </div>
     </div>
 </section>
+@endif --}}
+
+
+
+
+@if(Auth::user()->hasRole('transporter'))
+<section class="content-header">
+        <h1 style="font-family:Titillium Web, sans-serif">
+          Welcome To Smart Transporter Management Application(STMA)
+      </h1>
+      <br>
+      <div class="row">
+      <div class="col-lg-4">
+        <a href="#">
+        <div class="info-box">
+        <!-- Apply any bg-* class to to the icon to color it -->
+        <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Truck Details</span>
+          <span class="info-box-number">10</span>
+          {{-- <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span> --}}
+        </div><!-- /.info-box-content -->
+      </div><!-- /.info-box -->
+     </a>
+    </div>
+    </div>
+</section>
 @endif
 
 <!-- Main content -->
 <section class="content">
         <div class="row">
 
-            @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
+            @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
             <div class="col-lg-4">
                 <a href="{{ url('/settings/manage_users/roles') }}">
                 <div class="info-box">
@@ -54,7 +81,7 @@
             </div>
          @endif
 
-            @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
+            @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
             <div class="col-lg-4">
                 <a href="{{ url('/settings/manage_users/permissions') }}">
                 <div class="info-box">
@@ -83,8 +110,8 @@
          @endif
 
 
-         @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-         <div class="col-lg-4">
+         {{-- @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter')) --}}
+         {{-- <div class="col-lg-4">
              <a href="{{ url('/view-drivers') }}">
              <div class="info-box">
              <!-- Apply any bg-* class to to the icon to color it -->
@@ -95,9 +122,9 @@
              </div><!-- /.info-box-content -->
            </div><!-- /.info-box -->
           </a>
-         </div>
+         </div> --}}
 
-         <div class="col-lg-4">
+         {{-- <div class="col-lg-4">
              <a href="{{ url('/view-vehicles') }}">
              <div class="info-box">
              <!-- Apply any bg-* class to to the icon to color it -->
@@ -108,10 +135,10 @@
              </div><!-- /.info-box-content -->
            </div><!-- /.info-box -->
             </a>
-         </div>
+         </div> --}}
 
 
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
         <a href="{{ url('/request-customer') }}">
                 <div class="info-box">
                 <!-- Apply any bg-* class to to the icon to color it -->
@@ -122,11 +149,11 @@
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
                </a>
-        </div>
-      @endif
+        </div> --}}
+      {{-- @endif --}}
 
       @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('administrator') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-      <div class="col-lg-4">
+      {{-- <div class="col-lg-4">
           <a href="{{ url('/attend-requests') }}">
           <div class="info-box">
           <!-- Apply any bg-* class to to the icon to color it -->
@@ -137,9 +164,9 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
        </a>
-      </div>
+      </div> --}}
 
-      <div class="col-lg-4">
+      {{-- <div class="col-lg-4">
           <a href="{{ url('/view-bodytypes') }}">
           <div class="info-box">
           <!-- Apply any bg-* class to to the icon to color it -->
@@ -150,10 +177,10 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
          </a>
-      </div>
+      </div> --}}
 
 
-     <div class="col-lg-4">
+     {{-- <div class="col-lg-4">
              <a href="{{ url('/view-containertypes') }}">
              <div class="info-box">
              <!-- Apply any bg-* class to to the icon to color it -->
@@ -164,12 +191,12 @@
              </div><!-- /.info-box-content -->
            </div><!-- /.info-box -->
             </a>
-     </div>
+     </div> --}}
    @endif
 
 
    @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-   <div class="col-lg-4">
+   {{-- <div class="col-lg-4">
        <a href="{{ url('/view-trucktypes') }}">
        <div class="info-box">
        <!-- Apply any bg-* class to to the icon to color it -->
@@ -180,9 +207,9 @@
        </div><!-- /.info-box-content -->
      </div><!-- /.info-box -->
     </a>
-   </div>
+   </div> --}}
 
-    <div class="col-lg-4">
+    {{-- <div class="col-lg-4">
        <a href="{{ url('/request-item') }}">
        <div class="info-box">
        <!-- Apply any bg-* class to to the icon to color it -->
@@ -193,10 +220,10 @@
        </div><!-- /.info-box-content -->
      </div><!-- /.info-box -->
       </a>
-   </div>
+   </div> --}}
 
 
-   <div class="col-lg-4">
+   {{-- <div class="col-lg-4">
           <a href="{{ url('/view-trailers') }}">
           <div class="info-box">
           <!-- Apply any bg-* class to to the icon to color it -->
@@ -207,7 +234,7 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
          </a>
-  </div>
+  </div> --}}
 @endif
         </div>
         <br>
