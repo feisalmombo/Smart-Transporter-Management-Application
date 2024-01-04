@@ -49,17 +49,17 @@
                     {{-- <span class="login100-form-logo">
                         <i class="zmdi zmdi-local-grocery-se"></i>
                     </span> --}}
-                    <img class="img-responsive center-block center"  src="{{asset('temp/images/tls-final.png')}}" alt="tls" style="margin-bottom: 6%; margin-top: 2%;  float:center">
+                    <img class="img-responsive center-block center"  src="{{asset('temp/images/tls-final.png')}}" alt="stma" style="margin-bottom: 6%; margin-top: 2%;  float:center">
 
 
                     {{-- <span class="login100-form-title p-b-3 p-t-4">
-                        TLS LTD
+                        STMA
                     </span> --}}
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter username{{ $errors->has('email') ? ' has-error' : '' }}">
 
 
-                        <input class="input100" id="email" type="email" name="email" placeholder="pemba.ramadhani@tls.co.tz" value="{{ old('email') }}" required autofocus>
+                        <input class="input100" id="email" type="email" name="email" placeholder="ramadhani@gmail.com" value="{{ old('email') }}" required autofocus>
                         <span class="focus-input100" data-placeholder="&#9993;"></span>
 
                         @if ($errors->has('email'))
@@ -91,7 +91,7 @@
                 <!-- End form here -->
 
                 <div class="text-center">
-                    <a class="d-block medium mt-3" href="{{ url('/register/transporter') }}">Register Transporter</a>
+                    <a class="d-block medium mt-3" href="{{ url('/register/transporter') }}">Register</a>
                 </div>
 
             </div>
