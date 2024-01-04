@@ -58,7 +58,25 @@
       </div><!-- /.info-box -->
      </a>
     </div>
+
+
+    <div class="col-lg-4">
+      <a href="#">
+      <div class="info-box">
+      <!-- Apply any bg-* class to to the icon to color it -->
+      <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Company Details</span>
+        <span class="info-box-number">1</span>
+        {{-- <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span> --}}
+      </div><!-- /.info-box-content -->
+    </div><!-- /.info-box -->
+   </a>
+  </div>
+
+
     </div>
+    
 </section>
 @endif
 
