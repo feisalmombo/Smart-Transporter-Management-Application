@@ -86,35 +86,31 @@
       </li>
 
 
+      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('transporter') || Auth::user()->hasRole('administrator'))
       <li class="treeview">
 
         <a href="#">
           <i class="fa fa-registered"></i>
-          <span>Manage Request</span>
+          <span>Manage Coompany</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-
-            {{-- can('view_request') --}}
         <li>
               <a href="{{ url('/request-item') }}"><i class="fa fa-circle-o">
-                  </i> View Requestcustomer</a>
+                  </i> View Companies</a>
         </li>
-
-
 
         <li>
             <a href="{{ url('/request-customer/create') }}"><i class="fa fa-circle-o">
-                </i> Add Request</a>
+                </i> Add Company</a>
         </li>
             </ul>
 
       </li>
 
-      <li class="treeview">
-            {{-- can('view_attendRequest') --}}
+      {{-- <li class="treeview">
 
         <a href="#">
           <i class="fa fa-sun-o"></i>
@@ -124,7 +120,6 @@
           </span>
         </a>
         <ul class="treeview-menu">
-            {{-- can('view_request') --}}
         <li>
               <a href="{{ url('/attend-requests') }}"><i class="fa fa-circle-o">
                   </i> View AttendedRequest</a>
@@ -132,7 +127,9 @@
 
             </ul>
 
-      </li>
+      </li> --}}
+
+    @endif
 
 
       {{-- <li class="treeview">
