@@ -1,6 +1,6 @@
 <footer class="main-footer">
 	<div class="pull-right hidden-xs" style="font-family:Titillium Web, sans-serif">
-		<b>Version</b> 2.0.0 Developed by <a href="http://bsolutions.co.tz/"  target="_blank" style="text-decoration: none; font-family:Titillium Web, sans-serif">Bsolutions Company Ltd</a>
+		<b>Version</b> 1.0.0 Developed by <a href="#"  target="_blank" style="text-decoration: none; font-family:Titillium Web, sans-serif">Feisal Suleiman Mombo</a>
 	</div>
 	<strong style="text-align: center;font-family:Titillium Web, sans-serif">Copyright &copy; {{ date('Y') }} Smart Transporter Management Application<a href="#"  target="_blank" style="text-decoration: none; font-family:Titillium Web, sans-serif">(STMA)</a>.</strong> All Rights Reserved.
 </footer>
