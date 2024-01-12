@@ -6,9 +6,10 @@
     <li class="dropdown notifications-menu">
 
         @if(Auth::user()->hasRole('developer'))
-      <a href="/request-customer" class="dropdown-toggle" data-toggle="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bell-o"></i>
         <span class="label label-danger">
+          0
 
         @if(Auth::user() && !Auth::user()->can('') && App\RequestCustomer::All()
         //->where('status','=','Booked')
@@ -90,8 +91,8 @@
 @endforeach
 @endif
 <li>
-<a class="text-center" href="{{ url('/request-customer') }}">
-<strong>See All Request Customer </strong>
+<a class="text-center" href="#">
+<strong>See all notification </strong>
 <i class="fa fa-angle-right"></i>
 </a>
 </li>
