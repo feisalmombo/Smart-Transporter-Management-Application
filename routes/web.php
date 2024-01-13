@@ -65,6 +65,10 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::resource('/view/companies', 'CompaniesController');
             Route::post('/view/companies', 'CompaniesController@store');
 
+            // Manage Truck Controller
+            Route::resource('/view/trucks', 'TrucksController');
+            Route::post('/view/trucks', 'TrucksController@store');
+
             //Route for driver Controller
             Route::resource('/view-drivers', 'NewdriversController');
             Route::post('/view-drivers', 'NewdriversController@store');

@@ -15,9 +15,9 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 List of system users
-                <?php if(Auth::user()->can('create_user')){?>
+                
                 <a href="{{ url('/view-users/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add User</a>
-                <?php }?>
+              
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
