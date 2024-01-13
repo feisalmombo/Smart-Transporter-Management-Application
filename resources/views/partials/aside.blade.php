@@ -91,19 +91,19 @@
 
         <a href="#">
           <i class="fa fa-registered"></i>
-          <span>Manage Coompany</span>
+          <span>Manage Company</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
         <li>
-              <a href="{{ url('/request-item') }}"><i class="fa fa-circle-o">
+              <a href="{{ url('/view/companies') }}"><i class="fa fa-circle-o">
                   </i> View Companies</a>
         </li>
 
         <li>
-            <a href="{{ url('/request-customer/create') }}"><i class="fa fa-circle-o">
+            <a href="{{ url('/view/companies/create') }}"><i class="fa fa-circle-o">
                 </i> Add Company</a>
         </li>
             </ul>

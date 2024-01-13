@@ -23,7 +23,11 @@ class CreateCompaniesTable extends Migration
             $table->string('website_link')->nullable();
             $table->string('company_logo')->nullable();
             $table->string('address');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
