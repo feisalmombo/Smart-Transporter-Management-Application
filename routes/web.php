@@ -61,7 +61,7 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::post('/view-users', 'ViewUsersController@store');
             Route::get('/reset/{id}', 'ViewUsersController@resetpwd');
 
-            //  Manage Company Conttroller
+            //  Manage Company Controller
             Route::resource('/view/companies', 'CompaniesController');
             Route::post('/view/companies', 'CompaniesController@store');
 

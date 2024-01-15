@@ -106,7 +106,7 @@ class ViewUsersController extends Controller
         $users->first_name = $request->fname;
         $users->middle_name = $request->mname;
         $users->last_name = $request->lname;
-        $user_email = $users->email = strtolower($request->fname) . "." . strtolower($request->lname) . "@tls.co.tz";
+        $user_email = $users->email = strtolower($request->fname) . "." . strtolower($request->lname) . "@stma.com";
         $users->phone_number = $request->pnumber;
         $users->password = bcrypt(strtolower($user_email) . '1234');
         $st = $users->save();

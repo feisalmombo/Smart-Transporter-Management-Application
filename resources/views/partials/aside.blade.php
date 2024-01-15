@@ -58,7 +58,7 @@
 
       </li>
 
-      {<li class="treeview">
+      <li class="treeview">
 
         <a href="#">
           <i class="fa fa-truck"></i>
@@ -76,6 +76,34 @@
         <li>
             <a href="{{ url('/view/trucks/create') }}"><i class="fa fa-circle-o">
                 </i> Add Truck</a>
+        </li>
+            </ul>
+
+      </li>
+
+    @endif
+
+
+
+    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('transporter') || Auth::user()->hasRole('administrator'))
+      <li class="treeview">
+
+        <a href="#">
+          <i class="fa fa-money"></i>
+          <span>Manage Finance</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+        <li>
+              <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
+                  </i> View Invoices</a>
+        </li>
+
+        <li>
+            <a href="{{ url('/view/invoices/create') }}"><i class="fa fa-circle-o">
+                </i> Add Invoice</a>
         </li>
             </ul>
 

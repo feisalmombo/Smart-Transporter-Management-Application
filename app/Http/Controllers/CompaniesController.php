@@ -46,7 +46,7 @@ class CompaniesController extends Controller
         // return json_encode($companyData);
 
 
-        return view('manageCompany.viewCompany')->with('companyDatas', $companyData)->with('users', $users);
+        return view('manageCompany.viewCompany')->with('companyDatas', $companyData);
 
     }
 
@@ -89,8 +89,6 @@ class CompaniesController extends Controller
             'company_logo' => 'required|mimes:doc,docx,pdf,txt|max:2048',
             'address' => 'required',
         ]);
-
-
 
         $company = new Company();
         $company->company_name = $request->company_name;
