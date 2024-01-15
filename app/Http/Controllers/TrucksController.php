@@ -62,8 +62,11 @@ class TrucksController extends Controller
             return redirect()->back();
         });
 
+        $singleTransporter = Auth::user()->id;
+
         $company = DB::table('companies')
             ->select('id', 'company_name')
+            ->where('companies.user_id', '=', $singleTransporter)
             ->get();
 
         // return json_encode($company);
