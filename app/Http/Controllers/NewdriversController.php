@@ -81,7 +81,7 @@ class NewdriversController extends Controller
             'lname' => 'required',
             'driveremail' => 'required',
             'pnumber' => 'required',
-            'attachment_path' => 'required|mimes:doc,docx,pdf,txt|max:2048',
+            'attachment_path' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
             'driveraddress' => 'required',
             'dob' => 'required',
             'gender' => 'required',
