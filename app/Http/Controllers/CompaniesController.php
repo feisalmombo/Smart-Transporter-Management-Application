@@ -86,7 +86,7 @@ class CompaniesController extends Controller
             'tin' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
-            'company_logo' => 'required|mimes:doc,docx,pdf,txt|max:2048',
+            'company_logo' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
             'address' => 'required',
         ]);
 
