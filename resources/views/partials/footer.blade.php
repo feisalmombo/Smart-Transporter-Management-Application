@@ -11,7 +11,9 @@
 <script src="{{asset('temp/dist/js/permission_ajax.js')}}"></script>
 <script src="{{asset('temp/dist/js/vehicle_ajax.js')}}"></script>
 <script src="{{asset('temp/dist/js/hello.js')}}"></script>
-{{--  <script src="{{asset('js/jquery-1.11.3.min"></script>  --}}
+
+ {{-- <script src="{{asset('js/jquery-1.11.3.min')}}"></script>  --}}
+
 <script src="{{asset('js/assignedDriverToVehicle.js')}}"></script>
 <script src="{{asset('js/repeater.js')}}"></script>
 

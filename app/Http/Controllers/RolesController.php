@@ -12,16 +12,22 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class RolesController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware(function ($request, $next) {
+    //         if (\Auth::user()->can('manage_privileges')) {
+    //             return $next($request);
+    //         }
+    //         return redirect()->back();
+    //     });
+    // }
+
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(function ($request, $next) {
-            if (\Auth::user()->can('manage_privileges')) {
-                return $next($request);
-            }
-            return redirect()->back();
-        });
     }
+    
     /**
      * Display a listing of the resource.
      *

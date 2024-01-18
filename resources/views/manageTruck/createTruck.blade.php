@@ -33,7 +33,7 @@
 
                                         <div class="form-group">
                                             <label>Tonnage: </label>
-                                            <input class="form-control" required="required"  name="tonnage" placeholder="eg: 32MT">
+                                            <input type="number" class="form-control" required="required"  name="tonnage" placeholder="eg: 32">
                                         </div>
 
 
@@ -101,7 +101,7 @@
                                                     @foreach($companies as $company)
                                                     <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
                                                     @endforeach
-                                                </select>
+                                            </select>
                                         </div>
 
                                     </div>

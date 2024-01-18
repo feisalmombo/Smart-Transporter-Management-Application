@@ -70,7 +70,7 @@
 
 										<div class="form-group">
 											<label>VRN (Optional): </label>
-											<input class="form-control" required="required"  name="vrn" placeholder="eg: 8900-0978-0068">
+											<input class="form-control" name="vrn" placeholder="eg: 8900-0978-0068">
                                         </div>
 
                                         <div class="form-group">

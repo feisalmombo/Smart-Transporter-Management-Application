@@ -39,7 +39,7 @@ class CompaniesController extends Controller
         $companyData = DB::table('companies')
             ->join('users', 'companies.user_id', '=', 'users.id')
 
-            ->select('companies.id', 'companies.company_name', 'companies.tin', 'companies.vrn', 'companies.vrn', 'companies.phone_number', 'companies.email', 'companies.website_link', 'companies.company_logo', 'companies.address',
+            ->select('companies.id', 'companies.company_name', 'companies.tin', 'companies.vrn', 'companies.phone_number', 'companies.email', 'companies.website_link', 'companies.company_logo', 'companies.address',
              'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.created_at')
              ->where('companies.user_id', '=', $users)->get();
 
