@@ -6,90 +6,37 @@
     <li class="dropdown notifications-menu">
 
         @if(Auth::user()->hasRole('developer'))
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-bell-o"></i>
-        <span class="label label-danger">
-          0
-
-        @if(Auth::user() && !Auth::user()->can('') && App\RequestCustomer::All()
-        //->where('status','=','Booked')
-        //->where('customer_id','=',Auth::user()->id)
-        ->count())
-
-        <!--This show all Request customer -->
-            <i class=""> {{$notifications = App\RequestCustomer::All()
-            ->where('status','=','Booked')
-            //->where('customer_id','=',Auth::user()->id)
-            ->count()
-               }}
-               </i>
-                @endif
-                @if(Auth::user() && Auth::user()->can('') && $notifications=count(DB::table('request_customers')
-                                    ->join('request_items','request_items.requestcustomer_id','=','request_customers.id')
-                                    ->select('request_customers.status','request_items.id')
-                                    ->whereNotIn('request_customers.time_allocated',function($q){
-                                })
-                                ->whereIn('request_items.id',function($q){$q->select('after_attends.requestitem_id')
-                                ->from('after_attends');
-                                })
-                                ->get()
-                                ))
-                <i class=""> {{$notifications=count(DB::table('request_customers')
-                                    ->join('request_items','request_items.requestcustomer_id','=','request_customers.id')
-                                    ->select('request_customers.status','request_items.id')
-                                    ->whereNotIn('request_customers.time_allocated',function($q){
-
-                                })
-                                ->whereIn('request_items.id',function($q){$q->select('after_attends.requestitem_id')
-                                ->from('after_attends');
-                            })
-                            ->get()
-                            )
-                                        }}
-                                        </i>
-                @endif
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-danger">
+              0
             </span>
-      </a>
+          </a>
       @endif
 
       <ul class="dropdown-menu">
         <li class="header">This is the part for notifications menu</li>
 
-        @if(Auth::user() && !Auth::user()->can('') && count($newRequests = App\RequestCustomer::where('request_customers.status', '=', 'Booked')
-         ->join('users','request_customers.customer_id','=','users.id')
-        ->select('request_customers.id','request_customers.created_at', 'users.first_name', 'users.last_name')
-        ->get()
-        ))
-
-@foreach($newRequests as $new_request)
 <li>
-<a href="/notifications/{{$new_request->id}}">
+<a href="#">
 <div>
-<i class="fa fa-comment fa-fw"></i> {{ "Customer. ".$new_request->first_name." " }}
-<span class="pull-right text-muted small">{{ $new_request->created_at->diffForHumans() }}</span>
+<i class="fa fa-comment fa-fw"></i>
+<span class="pull-right text-muted small">54</span>
 </div>
 </a>
 </li>
 <li class="divider"></li>
-@endforeach
-@endif
-@if(Auth::user()->can('') && count($notifications = DB::table('request_customers')
-->join('request_items','request_items.requestcustomer_id','=','request_customers.id')
-->get()
-))
 
-@foreach($notifications as $notification)
 <li>
-<a href="/{{$notification->id}}">
+<a href="#">
 <div>
-<i class="fa fa-comment fa-fw"></i>{{str_limit($notification->goods_description, $limit = 10, $end = '...')}}
-<span class="pull-right text-muted small">{{date("F jS, Y", strtotime($notification->created_at))}}</span>
+<i class="fa fa-comment fa-fw"></i>yes
+<span class="pull-right text-muted small">No</span>
 </div>
 </a>
 </li>
 <li class="divider"></li>
-@endforeach
-@endif
+
 <li>
 <a class="text-center" href="#">
 <strong>See all notification </strong>
