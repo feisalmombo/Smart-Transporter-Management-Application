@@ -26,6 +26,7 @@ class CreateFinancesTable extends Migration
             $table->string('payment_date')->nullable();
             $table->string('pod_status')->nullable();
             $table->string('pod_attached_shared')->nullable();
+            $table->string('attached_file_paid')->nullable();
             $table->string('loading_place')->nullable();
             $table->string('status')->nullable(); 
             $table->string('arrived_date')->nullable();
