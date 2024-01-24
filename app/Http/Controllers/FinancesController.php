@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Finance;
-use App\Company;
+use App\Company; 
 use App\Truck;
+use App\UsersRole;
 use DB;
 use Auth;
 
@@ -34,7 +35,7 @@ class FinancesController extends Controller
         });
 
 
-        $singleUser = Auth::user()->id;
+        // $singleUser = Auth::user()->id;
 
         $financeData = DB::table('finances')
             ->join('users', 'finances.user_id', '=', 'users.id')
@@ -43,8 +44,8 @@ class FinancesController extends Controller
             ->select('finances.id', 'finances.tonnage', 'finances.invoice_number', 'finances.price_per_tonnage', 'finances.commodity_description', 'finances.advance_payment', 'finances.balance_payment', 'finances.waiting_charges', 'finances.loading_place', 'finances.status', 'finances.arrived_date', 'finances.loaded_date', 'finances.dispatch_date', 'finances.current_position', 'finances.destination', 'finances.remarks',
              'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 
              'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
-             'finances.created_at')
-             ->where('finances.user_id', '=', $singleUser)->get();
+             'finances.created_at')->get();
+            //  ->where('finances.user_id', '=', $singleUser)->get();
 
         // return json_encode($financeData);
 
@@ -74,7 +75,16 @@ class FinancesController extends Controller
             'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.company_name', 'trucks.created_at')
             ->get();
 
-        return view('manageFinance.createInvoice')->with('trucks', $trucks);
+
+        $customers = DB::table('users_roles')
+        ->join('roles', 'users_roles.role_id', '=', 'roles.id')
+        ->join('users', 'users_roles.user_id', '=', 'users.id')
+
+        ->select('roles.slug', 'roles.name',
+        'users.first_name', 'users.middle_name', 'users.last_name', 'users.email')
+        ->where('roles.name', '=', "customer")->get();
+
+        return view('manageFinance.createInvoice')->with('trucks', $trucks)->with('customers', $customers);
     }
 
     /**
@@ -99,9 +109,15 @@ class FinancesController extends Controller
         ]);
 
 
-        $truck =  Truck::where('truck_number', $request->truck_id)->first();
+        $customer = DB::table('users_roles')
+        ->join('roles', 'users_roles.role_id', '=', 'roles.id')
+        ->join('users', 'users_roles.user_id', '=', 'users.id')
 
-        // return json_encode($truck);
+        ->select('roles.slug', 'roles.name',
+        'users.id', 'users.first_name', 'users.middle_name', 'users.last_name', 'users.email')
+        ->where('users.first_name', '=',$request->user_id )->first();
+
+        $truck =  Truck::where('truck_number', $request->truck_id)->first();
 
         $waitingCharges = ($request->waiting_charges * 150);
 
@@ -125,7 +141,7 @@ class FinancesController extends Controller
         $invoice->current_position = $request->current_position;
         $invoice->destination = $request->destination;
         $invoice->remarks = $request->remarks;
-        $invoice->user_id = Auth::user()->id;
+        $invoice->user_id = $customer->id;
         $invoice->truck_id = $truck->id;
         $st = $invoice->save();
 

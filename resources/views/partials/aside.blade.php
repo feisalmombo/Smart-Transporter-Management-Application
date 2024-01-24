@@ -85,7 +85,7 @@
 
 
 
-    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('transporter') || Auth::user()->hasRole('administrator'))
+    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('administrator'))
       <li class="treeview">
 
         <a href="#">
@@ -96,6 +96,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
+
         <li>
               <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
                   </i> View Invoices</a>
@@ -110,6 +111,27 @@
       </li>
 
     @endif
+
+
+    @if(Auth::user()->hasRole('customer') || Auth::user()->hasRole('superadmin') )
+      <li class="treeview">
+
+        <a href="#">
+          <i class="fa fa-money"></i>
+          <span>Manage Finance</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+        <li>
+              <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
+                  </i> View Invoices</a>
+        </li>
+      </li>
+
+    @endif
+
 
     @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
 

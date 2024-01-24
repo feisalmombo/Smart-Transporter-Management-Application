@@ -13,12 +13,12 @@
 	<div class="col-lg-12">
 		@include('msgs.success')
 		<div class="panel panel-default">
-			<div class="panel-heading">
-                List of invoices
-             
-                <a href="{{ url('/view/invoices/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add Invoice</a>
-               
-			</div>
+                <div class="panel-heading">
+                        List of invoices
+                    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('administrator'))
+                        <a href="{{ url('/view/invoices/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add Invoice</a>
+                    @endif
+                </div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 

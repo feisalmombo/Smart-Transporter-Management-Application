@@ -56,19 +56,24 @@
                                                 <label>Loaded Date: </label>
                                                 <input type="date" name="loaded_date" id="loaded_date" class="form-control">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Customer: </label>
+                                            <select class="form-control" name="user_id" id="user_id" required="required">
+                                                <option value="">-- Select Customer --</option>
+                                                    @foreach($customers as $customer)
+                                                    <option value="{{ $customer->first_name }}">{{ $customer->first_name }} with Role name {{ $customer->name}}</option>
+                                                    @endforeach
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-4">
 
-                                            <div class="form-group">
-                                                <label>Price Per Tonnage (USD): </label>
-                                                <input type="number" class="form-control" name="price_per_tonnage" placeholder="eg: 250">
-                                            </div>
-
-                                                {{-- <div class="form-group">
-                                                    <label>Balance Payment (USD): </label>
-                                                    <input type="number" class="form-control" name="balance_payment" placeholder="eg: 7890">
-                                                </div> --}}
+                                                <div class="form-group">
+                                                    <label>Price Per Tonnage (USD): </label>
+                                                    <input type="number" class="form-control" name="price_per_tonnage" placeholder="eg: 250">
+                                                </div>
 
                                                 <div class="form-group">
                                                         <label>Status: </label>
