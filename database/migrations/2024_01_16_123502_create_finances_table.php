@@ -33,6 +33,7 @@ class CreateFinancesTable extends Migration
             $table->string('loaded_date')->nullable();
             $table->string('dispatch_date')->nullable();
             $table->string('current_position')->nullable();
+            $table->string('gprs_coordinate_point')->nullable();
             $table->string('destination')->nullable();
             $table->string('remarks')->nullable(); 
             $table->integer('customer_id')->unsigned();
