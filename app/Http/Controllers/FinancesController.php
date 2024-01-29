@@ -143,6 +143,7 @@ class FinancesController extends Controller
         $invoice->remarks = $request->remarks;
         $invoice->user_id = $customer->id;
         $invoice->truck_id = $truck->id;
+        $invoice->system_user_id = Auth::user()->id;
         $st = $invoice->save();
 
         if (!$st) {

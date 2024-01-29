@@ -28,43 +28,26 @@ class HomeController extends Controller
     {
         $permissionCount = DB::select('SELECT COUNT(*) as "permissionCount" FROM permissions');
 
-        $transporterCount = DB::select('SELECT COUNT(*) as "transporterCount" FROM adds_new_drivers');
-
-        $vehicleCount = DB::select('SELECT COUNT(*) as "vehicleCount" FROM adds_new_vehicles');
-
-        $RequestcustomersCount = DB::select('SELECT COUNT(*) as "requestcustomersCount" FROM request_customers');
-
-
-        $RequestitemsCount = DB::select('SELECT COUNT(*) as "requestitemsCount" FROM request_items');
+        // $transporterCount = DB::select('SELECT COUNT(*) as "transporterCount" FROM adds_new_drivers');
+        // $vehicleCount = DB::select('SELECT COUNT(*) as "vehicleCount" FROM adds_new_vehicles');
+        // $RequestcustomersCount = DB::select('SELECT COUNT(*) as "requestcustomersCount" FROM request_customers');
+        // $RequestitemsCount = DB::select('SELECT COUNT(*) as "requestitemsCount" FROM request_items');
 
 
         $roleCount = DB::select('SELECT COUNT(*) as "roleCount" FROM roles');
 
         $userCount = DB::select('SELECT COUNT(*) as "userCount" FROM users');
 
-        $attendedRequestCount = DB::select('SELECT COUNT(*) as "attendedRequestCount" FROM after_attends');
-
-        $bodyTypeCount = DB::select('SELECT COUNT(*) as "bodyTypeCount" FROM bodytypes');
-
-        $containerTypeCount = DB::select('SELECT COUNT(*) as "containerTypeCount" FROM containers');
-
-        $truckTypeCount = DB::select('SELECT COUNT(*) as "truckTypeCount" FROM trucktypes');
-
-        $trailerNumberCount = DB::select('SELECT COUNT(*) as "trailerNumberCount" FROM trailers');
+        // $attendedRequestCount = DB::select('SELECT COUNT(*) as "attendedRequestCount" FROM after_attends');
+        // $bodyTypeCount = DB::select('SELECT COUNT(*) as "bodyTypeCount" FROM bodytypes');
+        // $containerTypeCount = DB::select('SELECT COUNT(*) as "containerTypeCount" FROM containers');
+        // $truckTypeCount = DB::select('SELECT COUNT(*) as "truckTypeCount" FROM trucktypes');
+        // $trailerNumberCount = DB::select('SELECT COUNT(*) as "trailerNumberCount" FROM trailers');
 
 
         return view('home')
             ->with('permissionCount', $permissionCount)
             ->with('userCount', $userCount)
-            ->with('roleCount', $roleCount)
-            ->with('transporterCount', $transporterCount)
-            ->with('vehicleCount', $vehicleCount)
-            ->with('RequestcustomersCount', $RequestcustomersCount)
-            ->with('RequestitemsCount', $RequestitemsCount)
-            ->with('attendedRequestCount', $attendedRequestCount)
-            ->with('bodyTypeCount', $bodyTypeCount)
-            ->with('containerTypeCount', $containerTypeCount)
-            ->with('truckTypeCount', $truckTypeCount)
-            ->with('trailerNumberCount', $trailerNumberCount);
+            ->with('roleCount', $roleCount);
     }
 }
