@@ -73,53 +73,6 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::resource('/view/invoices', 'FinancesController');
             Route::post('/view/invoices', 'FinancesController@store');
 
-            //Route for driver Controller
-            Route::resource('/view-drivers', 'NewdriversController');
-            Route::post('/view-drivers', 'NewdriversController@store');
-
-
-            //Route for vehicle Controller
-            Route::resource('/view-vehicles', 'NewvehiclesController');
-            Route::post('/view-vehicles', 'NewvehiclesController@store');
-
-
-            //Route for Notification Controller
-            Route::resource('/notifications', 'NotificationController');
-            //Route::post('/notifications','NotificationController@store');
-
-            //Route For Fedback Notification Controller
-            //Route::resource('/view-feedback', 'FeedbackController');
-
-            // Route for AttendedRequest Controller
-            Route::resource('/attend-requests', 'AttendRequestsController');
-            Route::get('/attend-requests', 'AttendRequestsController@attendedRequest');
-
-
-            // Route for Request Customer Controller
-            Route::resource('/request-item', 'RequestItemsController');
-
-            // Route for Request Item Controller
-            Route::resource('/request-customer', 'RequestCustomersController');
-            Route::post('/request-customer', 'RequestCustomersController@store');
-
-            //Route Bodytypes Controller
-            Route::resource('/view-bodytypes', 'BodytypesController');
-            Route::post('/view-bodytypes', 'BodytypesController@store');
-
-            //Route ContainerTypes Controller
-            Route::resource('/view-containertypes', 'ContainersController');
-            Route::post('/view-containertypes', 'ContainersController@store');
-
-            //Route TruckTypes Controller
-            Route::resource('/view-trucktypes', 'TruckTypesController');
-            Route::post('/view-trucktypes', 'TruckTypesController@store');
-
-            //Route Trailer Controller
-            Route::resource('/view-trailers', 'TrailersControllers');
-            Route::post('/view-trailers', 'TrailersControllers@store');
-
-            // Route FeedbackAttendRequestsController Controller
-            // Route::resource('/view-attendedfeedback', 'FeedbackAttendRequestsController');
 
             //ROUTES FOR PERMISSIONS
             //Call entrust users view
