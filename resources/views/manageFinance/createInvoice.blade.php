@@ -48,7 +48,7 @@
 
                                         <div class="form-group">
                                                 <label>Loaded Date: </label>
-                                                <input type="date" name="loaded_date" id="loaded_date" class="form-control">
+                                                <input name="loaded_date" id="loaded_date" class="form-control" placeholder="DD-MM-YYYY">
                                         </div>
 
                                         <div class="form-group">
@@ -85,7 +85,7 @@
 
                                                 <div class="form-group">
                                                     <label>Dispatch Date: </label>
-                                                    <input type="date" name="dispatch_date" id="dispatch_date" class="form-control">
+                                                    <input name="dispatch_date" id="dispatch_date" class="form-control" placeholder="DD-MM-YYYY">
                                                 </div>
 
                                                 <div class="form-group">
@@ -114,7 +114,7 @@
 
                                         <div class="form-group">
                                             <label>Arrived Date: </label>
-                                            <input type="date" class="form-control" name="arrived_date">
+                                            <input class="form-control" name="arrived_date" placeholder="DD-MM-YYYY">
                                         </div>
 
                                         <div class="form-group">
