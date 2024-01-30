@@ -46,12 +46,6 @@
                                             <input class="form-control" name="advance_payment" type="number" placeholder="eg: 8000">
                                         </div>
 
-
-                                        <div class="form-group">
-                                            <label>Loading Place: </label>
-                                            <input name="loading_place" class="form-control" placeholder="eg: ETC Mbagala">
-                                        </div>
-
                                         <div class="form-group">
                                                 <label>Loaded Date: </label>
                                                 <input type="date" name="loaded_date" id="loaded_date" class="form-control">
@@ -85,24 +79,13 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Dispatch Date: </label>
-                                                    <input type="date" name="dispatch_date" id="dispatch_date" class="form-control">
+                                                    <label>Waiting Charges (Number of days): </label>
+                                                    <input type="number" class="form-control" name="waiting_charges" placeholder="eg: 5">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Remarks: </label>
-                                                    <select class="form-control" name="remarks" id="remarks">
-                                                        <option value="">-- Select Remarks --</option>
-                                                        <option value="Waiting for docs at border">Waiting for docs at border</option>
-                                                        <option value="Loaded waiting for docs">Loaded waiting for docs</option>
-                                                        <option value="Not Loaded, waiting to load">Not Loaded, waiting to load</option>
-                                                        <option value="Going">Going</option>
-                                                        <option value="Breakdown">Breakdown</option>
-                                                        <option value="Accident">Accident</option>
-                                                        <option value="Waiting to load">Waiting to load</option>
-                                                        <option value="Offloaded">Offloaded</option>
-                                                        <option value="Delayed">Delayed</option>
-                                                    </select>
+                                                    <label>Dispatch Date: </label>
+                                                    <input type="date" name="dispatch_date" id="dispatch_date" class="form-control">
                                                 </div>
 
                                                 <div class="form-group">
@@ -130,13 +113,24 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Waiting Charges (Number of days): </label>
-                                            <input type="number" class="form-control" name="waiting_charges" placeholder="eg: 5">
+                                            <label>Arrived Date: </label>
+                                            <input type="date" class="form-control" name="arrived_date">
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Arrived Date: </label>
-                                            <input type="date" class="form-control" name="arrived_date">
+                                            <label>Remarks: </label>
+                                            <select class="form-control" name="remarks" id="remarks">
+                                                <option value="">-- Select Remarks --</option>
+                                                <option value="Waiting for docs at border">Waiting for docs at border</option>
+                                                <option value="Loaded waiting for docs">Loaded waiting for docs</option>
+                                                <option value="Not Loaded, waiting to load">Not Loaded, waiting to load</option>
+                                                <option value="Going">Going</option>
+                                                <option value="Breakdown">Breakdown</option>
+                                                <option value="Accident">Accident</option>
+                                                <option value="Waiting to load">Waiting to load</option>
+                                                <option value="Offloaded">Offloaded</option>
+                                                <option value="Delayed">Delayed</option>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
