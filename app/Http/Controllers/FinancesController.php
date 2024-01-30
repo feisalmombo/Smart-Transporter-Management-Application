@@ -133,15 +133,27 @@ class FinancesController extends Controller
         $invoice->advance_payment = $request->advance_payment;
         $invoice->balance_payment = $balancePayment;
         $invoice->waiting_charges = $waitingCharges;
+
+
+        $invoice->payment_received_from = $request->$payment_received_from;
+        $invoice->payment_date = $request->$payment_date;
+        $invoice->pod_status = $request->$pod_status;
+        $invoice->pod_attached_shared = $request->$pod_attached_shared;
+        $invoice->attached_file_paid = $request->$attached_file_paid;
+
+
         $invoice->loading_place = $request->loading_place;
         $invoice->status = $request->status;
         $invoice->arrived_date = $request->arrived_date;
         $invoice->loaded_date = $request->loaded_date;
         $invoice->dispatch_date = $request->dispatch_date;
         $invoice->current_position = $request->current_position;
+
+        $invoice->gprs_coordinate_point = $request->gprs_coordinate_point;
+
         $invoice->destination = $request->destination;
         $invoice->remarks = $request->remarks;
-        $invoice->user_id = $customer->id;
+        $invoice->customer_id = $customer->id;
         $invoice->truck_id = $truck->id;
         $invoice->system_user_id = Auth::user()->id;
         $st = $invoice->save();
