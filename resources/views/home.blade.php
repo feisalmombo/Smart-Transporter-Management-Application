@@ -76,8 +76,10 @@
 
 
     </div>
-    
+
 </section>
+
+
 @endif
 
 <!-- Main content -->
