@@ -4,263 +4,997 @@
 
 @section('content')
 
-@if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-<section class="content-header">
-        <h1 style="font-family:Titillium Web, sans-serif">
-          Dashboard
-      </h1>
-</section>
-@endif
+         {{-- TRANSPORTER HEADER --}}
+    @if(Auth::user()->hasRole('transporter'))
+        <section class="content-header">
+                <h1 style="font-family:Titillium Web, sans-serif">
+                Welcome To Smart Transporter Management Application(STMA)
+            </h1>
+            <br>
+            <div class="row">
+            <div class="col-lg-4">
+                <a href="#">
+                    <div class="info-box">
+                        <!-- Apply any bg-* class to to the icon to color it -->
+                        <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Truck Details</span>
+                            <span class="info-box-number">10</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </a>
+            </div>
 
-{{-- @if(Auth::user()->hasRole('customer'))
-<section class="content-header">
-        <h1 style="font-family:Titillium Web, sans-serif">
-          Welcome To Smart Transporter Management Application(STMA)
-      </h1>
-      <br>
+
+            <div class="col-lg-4">
+                    <a href="#">
+                        <div class="info-box">
+                            <!-- Apply any bg-* class to to the icon to color it -->
+                            <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Company Details</span>
+                                <span class="info-box-number">1</span>
+                            </div><!-- /.info-box-content -->
+                        </div><!-- /.info-box -->
+                    </a>
+            </div>
+
+
+            </div>
+
+        </section>
+    @endif
+
+      {{-- DEVELOPER HEADER --}}
+    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
+    <section class="content">
+            <h1>
+                <strong>Dashboard</strong>
+            </h1>
+
+            <p style="color: black">
+                <strong>Welcome To Smart Transporter Management Application(STMA)</strong>
+            </p>
+      <!-- Info boxes -->
       <div class="row">
-      <div class="col-lg-4">
-        <a href="{{ url('/attend-requests') }}">
-        <div class="info-box">
-        <!-- Apply any bg-* class to to the icon to color it -->
-        <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Attended Request</span>
-          <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span>
-        </div><!-- /.info-box-content -->
-      </div><!-- /.info-box -->
-     </a>
-    </div>
-    </div>
-</section>
-@endif --}}
-
-
-
-
-@if(Auth::user()->hasRole('transporter'))
-<section class="content-header">
-        <h1 style="font-family:Titillium Web, sans-serif">
-          Welcome To Smart Transporter Management Application(STMA)
-      </h1>
-      <br>
-      <div class="row">
-      <div class="col-lg-4">
-        <a href="#">
-        <div class="info-box">
-        <!-- Apply any bg-* class to to the icon to color it -->
-        <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Truck Details</span>
-          <span class="info-box-number">10</span>
-          {{-- <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span> --}}
-        </div><!-- /.info-box-content -->
-      </div><!-- /.info-box -->
-     </a>
-    </div>
-
-
-    <div class="col-lg-4">
-      <a href="#">
-      <div class="info-box">
-      <!-- Apply any bg-* class to to the icon to color it -->
-      <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">Company Details</span>
-        <span class="info-box-number">1</span>
-        {{-- <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span> --}}
-      </div><!-- /.info-box-content -->
-    </div><!-- /.info-box -->
-   </a>
-  </div>
-
-
-    </div>
-
-</section>
-
-
-@endif
-
-<!-- Main content -->
-<section class="content">
-        <div class="row">
-
             @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
-            <div class="col-lg-4">
-                <a href="{{ url('/settings/manage_users/roles') }}">
-                <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon bg-light-blue"><i class="fa fa-check"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">System Roles</span>
-                  <span class="info-box-number">{{ $roleCount[0]->roleCount }}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-              </a>
-            </div>
-         @endif
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="{{ url('/settings/manage_users/roles') }}" style="color: black">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-check"></i></span>
 
-            @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
-            <div class="col-lg-4">
-                <a href="{{ url('/settings/manage_users/permissions') }}">
-                <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon bg-light-blue"><i class="fa fa-universal-access"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">System Permission</span>
-                  <span class="info-box-number">{{ $permissionCount[0]->permissionCount }}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-             </a>
-            </div>
+                            <div class="info-box-content">
+                                <span class="info-box-text">System Roles</span>
+                                <span class="info-box-number">{{ $roleCount[0]->roleCount }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </a>
+                </div>
+            @endif
 
-            <div class="col-lg-4">
-                <a href="{{ url('/view-users') }}">
-                <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon bg-blue"><i class="fa fa-user-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">System users</span>
-                  <span class="info-box-number">{{ $userCount[0]->userCount }}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-               </a>
-            </div>
-         @endif
-
-
-         {{-- @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter')) --}}
-         {{-- <div class="col-lg-4">
-             <a href="{{ url('/view-drivers') }}">
-             <div class="info-box">
-             <!-- Apply any bg-* class to to the icon to color it -->
-             <span class="info-box-icon bg-light-blue"><i class="fa fa-id-card"></i></span>
-             <div class="info-box-content">
-               <span class="info-box-text">Driver</span>
-               <span class="info-box-number">{{ $transporterCount[0]->transporterCount }}</span>
-             </div><!-- /.info-box-content -->
-           </div><!-- /.info-box -->
-          </a>
-         </div> --}}
-
-         {{-- <div class="col-lg-4">
-             <a href="{{ url('/view-vehicles') }}">
-             <div class="info-box">
-             <!-- Apply any bg-* class to to the icon to color it -->
-             <span class="info-box-icon bg-blue"><i class="fa fa-car"></i></span>
-             <div class="info-box-content">
-               <span class="info-box-text">Vehicles</span>
-               <span class="info-box-number">{{ $vehicleCount[0]->vehicleCount }}</span>
-             </div><!-- /.info-box-content -->
-           </div><!-- /.info-box -->
-            </a>
-         </div> --}}
-
-
-        {{-- <div class="col-lg-4">
-        <a href="{{ url('/request-customer') }}">
-                <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon bg-blue"><i class="fa fa-registered"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Request</span>
-                  <span class="info-box-number">{{ $RequestcustomersCount[0]->requestcustomersCount }}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-               </a>
-        </div> --}}
-      {{-- @endif --}}
-
-      @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('administrator') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-      {{-- <div class="col-lg-4">
-          <a href="{{ url('/attend-requests') }}">
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/settings/manage_users/permissions') }}"  style="color: black">
           <div class="info-box">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon bg-light-blue"><i class="fa fa-sun-o"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Attended Request</span>
-            <span class="info-box-number">{{ $attendedRequestCount[0]->attendedRequestCount }}</span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-       </a>
-      </div> --}}
-
-      {{-- <div class="col-lg-4">
-          <a href="{{ url('/view-bodytypes') }}">
-          <div class="info-box">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon bg-blue"><i class="fa fa-shield"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">BodyType</span>
-            <span class="info-box-number">{{ $bodyTypeCount[0]->bodyTypeCount }}</span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-         </a>
-      </div> --}}
-
-
-     {{-- <div class="col-lg-4">
-             <a href="{{ url('/view-containertypes') }}">
-             <div class="info-box">
-             <!-- Apply any bg-* class to to the icon to color it -->
-             <span class="info-box-icon bg-blue"><i class="fa fa-connectdevelop"></i></span>
-             <div class="info-box-content">
-               <span class="info-box-text">ContainerTypes</span>
-               <span class="info-box-number">{{ $containerTypeCount[0]->containerTypeCount }}</span>
-             </div><!-- /.info-box-content -->
-           </div><!-- /.info-box -->
-            </a>
-     </div> --}}
-   @endif
-
-
-   @if(Auth::user()->hasRole('developer')|| Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('transporter'))
-   {{-- <div class="col-lg-4">
-       <a href="{{ url('/view-trucktypes') }}">
-       <div class="info-box">
-       <!-- Apply any bg-* class to to the icon to color it -->
-       <span class="info-box-icon bg-light-blue"><i class="fa fa-truck"></i></span>
-       <div class="info-box-content">
-         <span class="info-box-text">TruckTypes</span>
-         <span class="info-box-number">{{ $truckTypeCount[0]->truckTypeCount }}</span>
-       </div><!-- /.info-box-content -->
-     </div><!-- /.info-box -->
-    </a>
-   </div> --}}
-
-    {{-- <div class="col-lg-4">
-       <a href="{{ url('/request-item') }}">
-       <div class="info-box">
-       <!-- Apply any bg-* class to to the icon to color it -->
-       <span class="info-box-icon bg-blue"><i class="fa fa-sitemap"></i></span>
-       <div class="info-box-content">
-         <span class="info-box-text">Request items</span>
-         <span class="info-box-number">{{ $RequestitemsCount[0]->requestitemsCount }}</span>
-       </div><!-- /.info-box-content -->
-     </div><!-- /.info-box -->
-      </a>
-   </div> --}}
-
-
-   {{-- <div class="col-lg-4">
-          <a href="{{ url('/view-trailers') }}">
-          <div class="info-box">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon bg-blue"><i class="fa fa-train"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Trailer Number</span>
-            <span class="info-box-number">{{ $trailerNumberCount[0]->trailerNumberCount }}</span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-         </a>
-  </div> --}}
-@endif
+            <span class="info-box-icon bg-red"><i class="fa fa-universal-access"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">System Permission</span>
+              <span class="info-box-number">{{ $permissionCount[0]->permissionCount }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </a>
         </div>
-        <br>
-        <br>
-        <br>
+        <!-- /.col -->
 
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/view-users') }}"  style="color: black">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">System users</span>
+              <span class="info-box-number">{{ $userCount[0]->userCount }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </a>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/total/compare/loans') }}"  style="color: black">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-object-group"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No of Compares</span>
+              <span class="info-box-number">33</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </a>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      {{--  row  --}}
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/product/inquries') }}"  style="color: black">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-hdd-o"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">No of Inquiries</span>
+                <span class="info-box-number">33</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/institution/types') }}"  style="color: black">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-university"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No of Institution Types</span>
+              <span class="info-box-number">33</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </a>
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{ url('/loan/types') }}"  style="color: black">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-book"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No of Loan Types</span>
+              <span class="info-box-number">333</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </a>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <a href="{{ url('/view/all/users') }}"  style="color: black">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">System Users</span>
+              <span class="info-box-number">333</span>
+            </div>
+            <!-- /.info-box-content -->
+            </a>
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      {{--  row  --}}
+
+        {{--  Another row --}}
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="#"  style="color: black">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-clock-o"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Average Period</span>
+                    <span class="info-box-number">33</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </a>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="#"  style="color: black">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Average Amount Requested</span>
+                  <span class="info-box-number">333</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </a>
+            </div>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="#"  style="color: black">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-safari"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Average Net Salary</span>
+                  <span class="info-box-number">333</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </a>
+            </div>
+            <!-- /.col -->
+            {{-- <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <a href="#"  style="color: black">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">System Users</span>
+                  <span class="info-box-number">{{ $numberofusersCount[0]->numberofusersCount }}</span>
+                </div>
+                <!-- /.info-box-content -->
+                </a>
+              </div>
+              <!-- /.info-box -->
+            </div> --}}
+            <!-- /.col -->
+        </div>
+        {{--  Another row  --}}
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Number Compare Report</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+
+                  <div class="chart">
+                    <canvas id="salesChart" style="height: 40px;"></canvas>
+                    {{-- {!! $chart->html() !!} --}}
+                  </div>
+                  <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col -->
+
+                {{--  Loans Side  --}}
+                <div class="col-md-4">
+                  <p class="text-center">
+                    <strong>Loans</strong>
+                  </p>
+
+                  <div class="progress-group">
+                    <a href="{{ url('/total/loans/rejected/approved') }}"  style="color: black">
+                    <span class="progress-text">Total Loans[Rejected/Approved]</span>
+                    <span class="progress-number">33</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                    </div>
+                    </a>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <a href="33"  style="color: black">
+
+                    <span class="progress-text">Loan Rejected</span>
+                    <span class="progress-number">33</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                    </div>
+                    </a>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <a href="{{ url('/total/loan/approved') }}"  style="color: black">
+                    <span class="progress-text">Loan Approved</span>
+                    <span class="progress-number">33</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                    </div>
+                    </a>
+                  </div>
+                  <!-- /.progress-group -->
+
+                  <div class="progress-group">
+                    <a href="{{ url('/loan/requests') }}"  style="color: black">
+                    <span class="progress-text">Loan Applied</span>
+                    <span class="progress-number">33</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                    </div>
+                  </a>
+                  </div>
+                  <!-- /.progress-group -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- ./box-body -->
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <a href="{{ url('/product/inquries') }}"  style="color: black">
+                  <div class="description-block border-right">
+                    {{--  <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>  --}}
+                    <h5 class="description-header">33</h5>
+                    <span class="description-text">Total Inquires</span>
+                  </div>
+                  <!-- /.description-block -->
+                    </a>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                    <a href="{{ url('/loan/requests') }}"  style="color: black">
+                  <div class="description-block border-right">
+                    {{--  <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>  --}}
+                    <h5 class="description-header">33</h5>
+                    <span class="description-text">Total Loan Applied</span>
+                  </div>
+                  <!-- /.description-block -->
+                    </a>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                    <a href="{{ url('/total/loan/approved') }}"  style="color: black">
+                  <div class="description-block border-right">
+                    {{--  <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>  --}}
+                    <h5 class="description-header">33</h5>
+                    <span class="description-text">Total Loan Approved</span>
+                  </div>
+                  <!-- /.description-block -->
+                    </a>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                    <a href="{{ url('/all/loan/rejected') }}"  style="color: black">
+                  <div class="description-block">
+                    {{--  <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>  --}}
+                    <h5 class="description-header">33</h5>
+                    <span class="description-text">Total Loan Rejected</span>
+                  </div>
+                  <!-- /.description-block -->
+                    </a>
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <div class="col-md-8">
+          <!-- MAP & BOX PANE -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">System Users Report</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="row">
+                <div class="col-sm-8">
+                    <div class="chart">
+                        <canvas id="salesChart" style="height: 40px;"></canvas>
+                        {{-- {!! $systemuserchart->html() !!} --}}
+                      </div>
+                </div>
+                <!-- /.col -->
+                {{--  <div class="col-md-3 col-sm-4">
+                  <div class="pad box-pane-right bg-green" style="min-height: 280px">
+                    <div class="description-block margin-bottom">
+                      <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
+                      <h5 class="description-header">8390</h5>
+                      <span class="description-text">Visits</span>
+                    </div>
+                    <!-- /.description-block -->
+                    <div class="description-block margin-bottom">
+                      <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                      <h5 class="description-header">30%</h5>
+                      <span class="description-text">Referrals</span>
+                    </div>
+                    <!-- /.description-block -->
+                    <div class="description-block">
+                      <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                      <h5 class="description-header">70%</h5>
+                      <span class="description-text">Organic</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>  --}}
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          {{--  <div class="row">
+            <div class="col-md-6">
+              <!-- DIRECT CHAT -->
+              <div class="box box-warning direct-chat direct-chat-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Direct Chat</h3>
+
+                  <div class="box-tools pull-right">
+                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
+                            data-widget="chat-pane-toggle">
+                      <i class="fa fa-comments"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <!-- Conversations are loaded here -->
+                  <div class="direct-chat-messages">
+                    <!-- Message. Default to the left -->
+                    <div class="direct-chat-msg">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        Is this template really for free? That's unbelievable!
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                        <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        You better believe it!
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <!-- Message. Default to the left -->
+                    <div class="direct-chat-msg">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                        <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        Working with AdminLTE on a great new app! Wanna join?
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                        <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        I would love to.
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                  </div>
+                  <!--/.direct-chat-messages-->
+
+                  <!-- Contacts are loaded here -->
+                  <div class="direct-chat-contacts">
+                    <ul class="contacts-list">
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  Count Dracula
+                                  <small class="contacts-list-date pull-right">2/28/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">How have you been? I was...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  Sarah Doe
+                                  <small class="contacts-list-date pull-right">2/23/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">I will be waiting for...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  Nadia Jolie
+                                  <small class="contacts-list-date pull-right">2/20/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">I'll call you back at...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  Nora S. Vans
+                                  <small class="contacts-list-date pull-right">2/10/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">Where is your new...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  John K.
+                                  <small class="contacts-list-date pull-right">1/27/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">Can I take a look at...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                      <li>
+                        <a href="#">
+                          <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Image">
+
+                          <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                                  Kenneth M.
+                                  <small class="contacts-list-date pull-right">1/4/2015</small>
+                                </span>
+                            <span class="contacts-list-msg">Never mind I found...</span>
+                          </div>
+                          <!-- /.contacts-list-info -->
+                        </a>
+                      </li>
+                      <!-- End Contact Item -->
+                    </ul>
+                    <!-- /.contatcts-list -->
+                  </div>
+                  <!-- /.direct-chat-pane -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <form action="#" method="post">
+                    <div class="input-group">
+                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <span class="input-group-btn">
+                            <button type="button" class="btn btn-warning btn-flat">Send</button>
+                          </span>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.box-footer-->
+              </div>
+              <!--/.direct-chat -->
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-6">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Latest Members</h3>
+
+                  <div class="box-tools pull-right">
+                    <span class="label label-danger">8 New Members</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Alexander Pierce</a>
+                      <span class="users-list-date">Today</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user8-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Norman</a>
+                      <span class="users-list-date">Yesterday</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user7-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Jane</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user6-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">John</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user2-160x160.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Alexander</a>
+                      <span class="users-list-date">13 Jan</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user5-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Sarah</a>
+                      <span class="users-list-date">14 Jan</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Nora</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                    <li>
+                      <img src="dist/img/user3-128x128.jpg" alt="User Image">
+                      <a class="users-list-name" href="#">Nadia</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+            <!-- /.col -->
+          </div>  --}}
+          <!-- /.row -->
+
+          <!-- TABLE: LATEST ORDERS -->
+          {{--  <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Latest Orders</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Popularity</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                    <td>Call of Duty IV</td>
+                    <td><span class="label label-success">Shipped</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                    <td>iPhone 6 Plus</td>
+                    <td><span class="label label-danger">Delivered</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-info">Processing</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                    <td>iPhone 6 Plus</td>
+                    <td><span class="label label-danger">Delivered</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                    <td>Call of Duty IV</td>
+                    <td><span class="label label-success">Shipped</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>  --}}
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-4">
+          <!-- Info Boxes Style 2 -->
+          <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="fa fa-object-group"></i></span>
+
+            <div class="info-box-content">
+                <a href="{{ url('/total/compare/loans') }}" style="color: white">
+              <span class="info-box-text">No of Compare</span>
+              <span class="info-box-number">33</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 180%"></div>
+              </div>
+                </a>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+
+            <div class="info-box-content">
+                <a href="{{ url('/total/loans/rejected/approved') }}" style="color: white">
+              <span class="info-box-text">Follow Ups</span>
+              <span class="info-box-number">33</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 180%"></div>
+              </div>
+                </a>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa fa-id-badge"></i></span>
+
+            <div class="info-box-content">
+                <a href="{{ url('/subscriber-email') }}" style="color: white">
+              <span class="info-box-text">No of Subscribers</span>
+              <span class="info-box-number">33</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 180%"></div>
+              </div>
+                </a>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+          {{--  <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Loan Rejected</span>
+              <span class="info-box-number">{!! $allloanRejectedDashboardCount !!}</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 40%"></div>
+              </div>
+              <span class="progress-description">
+                    40% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>  --}}
+          <!-- /.info-box -->
+
+          {{--  <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Browser Usage</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieChart" height="150"></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                    <li><i class="fa fa-circle-o text-green"></i> IE</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+                    <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
+                    <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                    <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">United States of America
+                  <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a>
+                </li>
+                <li><a href="#">China
+                  <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+              </ul>
+            </div>
+            <!-- /.footer -->
+          </div>  --}}
+          <!-- /.box -->
+
+          <!-- PRODUCT LIST -->
+          {{--  <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Top Products</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <ul class="products-list product-list-in-box">
+                <li class="item">
+                  <div class="product-img">
+                    <img src="dist/img/default-50x50.gif" alt="Product Image">
+                  </div>
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title">Samsung TV
+                      <span class="label label-warning pull-right">Tshs 1800</span></a>
+                    <span class="product-description">
+                          Samsung 32
+                        </span>
+                  </div>
+                </li>
+                <!-- /.item -->
+                <li class="item">
+                  <div class="product-img">
+                    <img src="dist/img/default-50x50.gif" alt="Product Image">
+                  </div>
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title">Bicycle
+                      <span class="label label-info pull-right">Tshs 700</span></a>
+                    <span class="product-description">
+                          hello
+                        </span>
+                  </div>
+                </li>
+                <!-- /.item -->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>  --}}
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </section>
+    @endif
 
 @endsection
