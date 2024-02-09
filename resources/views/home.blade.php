@@ -114,8 +114,8 @@
             <span class="info-box-icon bg-yellow"><i class="fa fa-object-group"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">No of Compares</span>
-              <span class="info-box-number">33</span>
+              <span class="info-box-text">No of Company registered</span>
+              <span class="info-box-number">{{ $companyregisteredCount[0]->companyregisteredCount }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>

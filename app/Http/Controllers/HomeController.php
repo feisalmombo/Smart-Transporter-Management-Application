@@ -38,6 +38,8 @@ class HomeController extends Controller
 
         $userCount = DB::select('SELECT COUNT(*) as "userCount" FROM users');
 
+        $companyregisteredCount = DB::select('SELECT COUNT(*) as "companyregisteredCount" FROM companies');
+
         // $attendedRequestCount = DB::select('SELECT COUNT(*) as "attendedRequestCount" FROM after_attends');
         // $bodyTypeCount = DB::select('SELECT COUNT(*) as "bodyTypeCount" FROM bodytypes');
         // $containerTypeCount = DB::select('SELECT COUNT(*) as "containerTypeCount" FROM containers');
@@ -48,6 +50,7 @@ class HomeController extends Controller
         return view('home')
             ->with('permissionCount', $permissionCount)
             ->with('userCount', $userCount)
-            ->with('roleCount', $roleCount);
+            ->with('roleCount', $roleCount)
+            ->with('companyregisteredCount', $companyregisteredCount);
     }
 }
