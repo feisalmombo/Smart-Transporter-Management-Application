@@ -179,8 +179,10 @@
 
                   <div class="chart">
                     <canvas id="salesChart" style="height: 40px;"></canvas>
-                    {{-- {!! $chart->html() !!} --}}
+                    {!! Charts::assets() !!}
                   </div>
+
+                  {!! $piechart->render() !!}
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->

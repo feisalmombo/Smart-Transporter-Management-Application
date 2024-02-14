@@ -8,6 +8,7 @@ use App\Role;
 use Auth;
 use DB;
 use App\User;
+use App\Truck;
 
 class HomeController extends Controller
 {
@@ -43,11 +44,22 @@ class HomeController extends Controller
         $systemusers= User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
         ->get();
             $chart = Charts::database($systemusers, 'bar', 'highcharts')
+            ->setTitle('All Users Chart')
             ->setElementLabel("System Users")
             ->setLabels("users")
             ->setDimensions(1000, 500)
             ->setResponsive(true)
             ->groupByMonth(date('Y'), true);
+
+
+        $piecharttrucks= Truck::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+        ->get();
+            $piechart = Charts::create('pie', 'highcharts')
+            ->setTitle('My nice chart')
+            ->setLabels(['First', 'Second', 'Third'])
+            ->setValues([5,10,20])
+            ->setDimensions(1000,500)
+            ->setResponsive(false);
 
 
         return view('home')
@@ -57,6 +69,7 @@ class HomeController extends Controller
             ->with('companyregisteredCount', $companyregisteredCount)
             ->with('totaltrucksCount', $totaltrucksCount)
             ->with('chart', $chart)
+            ->with('piechart', $piechart)
             ->with('totalfinanceCount', $totalfinanceCount);
     }
 }
