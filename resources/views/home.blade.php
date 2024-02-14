@@ -131,7 +131,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
         <a href="{{ url('/product/inquries') }}"  style="color: black">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-hdd-o"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="fa fa-truck"></i></span>
 
             <div class="info-box-content">
                 <span class="info-box-text">No of Trucks</span>
@@ -164,7 +164,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Number Compare Report</h3>
+              <h3 class="box-title">Number of Trucks charts</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -188,110 +188,40 @@
                 {{--  Loans Side  --}}
                 <div class="col-md-4">
                   <p class="text-center">
-                    <strong>Loans</strong>
+                    <strong>Records</strong>
                   </p>
 
                   <div class="progress-group">
-                    <a href="{{ url('/total/loans/rejected/approved') }}"  style="color: black">
-                    <span class="progress-text">Total Loans[Rejected/Approved]</span>
-                    <span class="progress-number">33</span>
+                    <span class="progress-text">Total System Roles</span>
+                    <span class="progress-number">{{ $roleCount[0]->roleCount }}</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
                     </div>
-                    </a>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
-                    <a href="33"  style="color: black">
-
-                    <span class="progress-text">Loan Rejected</span>
-                    <span class="progress-number">33</span>
+                    <span class="progress-text">Total System Permission</span>
+                    <span class="progress-number">{{ $permissionCount[0]->permissionCount }}</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-red" style="width: 80%"></div>
                     </div>
-                    </a>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
-                    <a href="{{ url('/total/loan/approved') }}"  style="color: black">
-                    <span class="progress-text">Loan Approved</span>
-                    <span class="progress-number">33</span>
+                    <span class="progress-text">Total Users</span>
+                    <span class="progress-number">{{ $userCount[0]->userCount }}</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-green" style="width: 80%"></div>
                     </div>
-                    </a>
                   </div>
-                  <!-- /.progress-group -->
-
-                  <div class="progress-group">
-                    <a href="{{ url('/loan/requests') }}"  style="color: black">
-                    <span class="progress-text">Loan Applied</span>
-                    <span class="progress-number">33</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </a>
-                  </div>
-                  <!-- /.progress-group -->
                 </div>
                 <!-- /.col -->
               </div>
               <!-- /.row -->
             </div>
-            <!-- ./box-body -->
-            <div class="box-footer">
-              <div class="row">
-                <div class="col-sm-3 col-xs-6">
-                    <a href="{{ url('/product/inquries') }}"  style="color: black">
-                  <div class="description-block border-right">
-                    {{--  <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>  --}}
-                    <h5 class="description-header">33</h5>
-                    <span class="description-text">Total Inquires</span>
-                  </div>
-                  <!-- /.description-block -->
-                    </a>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                    <a href="{{ url('/loan/requests') }}"  style="color: black">
-                  <div class="description-block border-right">
-                    {{--  <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>  --}}
-                    <h5 class="description-header">33</h5>
-                    <span class="description-text">Total Loan Applied</span>
-                  </div>
-                  <!-- /.description-block -->
-                    </a>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                    <a href="{{ url('/total/loan/approved') }}"  style="color: black">
-                  <div class="description-block border-right">
-                    {{--  <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>  --}}
-                    <h5 class="description-header">33</h5>
-                    <span class="description-text">Total Loan Approved</span>
-                  </div>
-                  <!-- /.description-block -->
-                    </a>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                    <a href="{{ url('/all/loan/rejected') }}"  style="color: black">
-                  <div class="description-block">
-                    {{--  <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>  --}}
-                    <h5 class="description-header">33</h5>
-                    <span class="description-text">Total Loan Rejected</span>
-                  </div>
-                  <!-- /.description-block -->
-                    </a>
-                </div>
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-footer -->
           </div>
           <!-- /.box -->
         </div>
@@ -306,7 +236,7 @@
           <!-- MAP & BOX PANE -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">System Users Report</h3>
+              <h3 class="box-title">All Users Registered in the System Charts</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -320,8 +250,11 @@
                 <div class="col-sm-8">
                     <div class="chart">
                         <canvas id="salesChart" style="height: 40px;"></canvas>
-                        {{-- {!! $systemuserchart->html() !!} --}}
+                        {!! Charts::assets() !!}
                       </div>
+
+                        {!! $chart->render() !!}
+
                 </div>
                 <!-- /.col -->
                 {{--  <div class="col-md-3 col-sm-4">
@@ -891,6 +824,9 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+
+        {{-- {!! $chart->render() !!} --}}
+
     </section>
     @endif
 
