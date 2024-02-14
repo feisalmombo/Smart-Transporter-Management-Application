@@ -40,6 +40,9 @@ class HomeController extends Controller
 
         $companyregisteredCount = DB::select('SELECT COUNT(*) as "companyregisteredCount" FROM companies');
 
+
+        $totaltrucksCount = DB::select('SELECT COUNT(*) as "totaltrucksCount" FROM trucks');
+
         // $attendedRequestCount = DB::select('SELECT COUNT(*) as "attendedRequestCount" FROM after_attends');
         // $bodyTypeCount = DB::select('SELECT COUNT(*) as "bodyTypeCount" FROM bodytypes');
         // $containerTypeCount = DB::select('SELECT COUNT(*) as "containerTypeCount" FROM containers');
@@ -51,6 +54,7 @@ class HomeController extends Controller
             ->with('permissionCount', $permissionCount)
             ->with('userCount', $userCount)
             ->with('roleCount', $roleCount)
-            ->with('companyregisteredCount', $companyregisteredCount);
+            ->with('companyregisteredCount', $companyregisteredCount)
+            ->with('totaltrucksCount', $totaltrucksCount);
     }
 }

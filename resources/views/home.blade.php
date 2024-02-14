@@ -109,7 +109,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{{ url('/total/compare/loans') }}"  style="color: black">
+        <a href="#"  style="color: black">
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="fa fa-object-group"></i></span>
 
@@ -134,8 +134,8 @@
             <span class="info-box-icon bg-aqua"><i class="fa fa-hdd-o"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">No of Inquiries</span>
-                <span class="info-box-number">33</span>
+                <span class="info-box-text">No of Trucks</span>
+                <span class="info-box-number">{{ $totaltrucksCount[0]->totaltrucksCount }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
