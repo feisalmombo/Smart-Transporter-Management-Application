@@ -149,8 +149,8 @@
             <span class="info-box-icon bg-red"><i class="fa fa-university"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">No of Institution Types</span>
-              <span class="info-box-number">33</span>
+              <span class="info-box-text">No of Finance</span>
+              <span class="info-box-number">{{ $totalfinanceCount[0]->totalfinanceCount }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -158,109 +158,6 @@
         </a>
         </div>
         <!-- /.col -->
-
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{{ url('/loan/types') }}"  style="color: black">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-book"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">No of Loan Types</span>
-              <span class="info-box-number">333</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </a>
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <a href="{{ url('/view/all/users') }}"  style="color: black">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">System Users</span>
-              <span class="info-box-number">333</span>
-            </div>
-            <!-- /.info-box-content -->
-            </a>
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      {{--  row  --}}
-
-        {{--  Another row --}}
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-            <a href="#"  style="color: black">
-              <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="fa fa-clock-o"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Average Period</span>
-                    <span class="info-box-number">33</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-            </a>
-              <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-            <a href="#"  style="color: black">
-              <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">Average Amount Requested</span>
-                  <span class="info-box-number">333</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-              <!-- /.info-box -->
-            </a>
-            </div>
-            <!-- /.col -->
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-            <a href="#"  style="color: black">
-              <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-safari"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">Average Net Salary</span>
-                  <span class="info-box-number">333</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-              <!-- /.info-box -->
-            </a>
-            </div>
-            <!-- /.col -->
-            {{-- <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <a href="#"  style="color: black">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">System Users</span>
-                  <span class="info-box-number">{{ $numberofusersCount[0]->numberofusersCount }}</span>
-                </div>
-                <!-- /.info-box-content -->
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div> --}}
-            <!-- /.col -->
-        </div>
-        {{--  Another row  --}}
 
 
       <div class="row">
