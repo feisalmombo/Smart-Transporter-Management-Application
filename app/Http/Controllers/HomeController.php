@@ -54,12 +54,13 @@ class HomeController extends Controller
 
         $piecharttrucks= Truck::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
         ->get();
-            $piechart = Charts::create('pie', 'highcharts')
-            ->setTitle('Trucks Chart')
-            ->setLabels(['First', 'Second', 'Third'])
-            ->setValues([5,10,20])
-            ->setDimensions(1000,500)
-            ->setResponsive(false);
+            $piechart = Charts::database(Truck::all(), 'bar', 'highcharts')
+                ->setTitle('All Trucks Chart')
+                ->setElementLabel("Total")
+                ->setDimensions(1000, 500)
+                ->setResponsive(false)
+                ->groupByYear();
+
 
 
         return view('home')
