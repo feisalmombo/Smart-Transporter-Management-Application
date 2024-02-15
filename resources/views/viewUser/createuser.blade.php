@@ -31,7 +31,7 @@
 
                                         <div class="form-group">
                                                 <label>Middle Name: </label>
-                                                <input class="form-control" name="mname" placeholder="eg: Option">
+                                                <input class="form-control" name="mname" placeholder="eg: Allen (Optional)">
                                             </div>
 
 										<div class="form-group">
@@ -41,7 +41,7 @@
 
                                         <div class="form-group">
                                                 <label>Phone Number</label>
-                                                <input type="tel" class="form-control" required="required"  name="pnumber" placeholder="eg: +255654197534">
+                                                <input type="tel" class="form-control" required="required"  name="pnumber" placeholder="eg: 0654197534">
                                             </div>
 
 										<div class="form-group">

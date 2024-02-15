@@ -93,9 +93,9 @@ class ViewUsersController extends Controller
             return redirect()->back();
         });
         $this->validate(request(), [
-            'fname' => 'required',
-            'lname' => 'required',
-            'pnumber' => 'required',
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'pnumber' => 'required|numeric|digits:10',
             'privilege' => 'required',
         ]);
 
@@ -192,10 +192,10 @@ class ViewUsersController extends Controller
         });
         $user = User::findOrFail($id);
         $this->validate(request(), [
-            'fname' => 'required',
-            'lname' => 'required',
-            'useremail' => 'required',
-            'pnumber' => 'required',
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'useremail' => 'required|email',
+            'pnumber' => 'required|numeric|digits:10',
         ]);
 
         $user->first_name = $request->fname;

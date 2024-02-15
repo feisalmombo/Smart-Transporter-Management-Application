@@ -60,54 +60,28 @@
                     <div class="wrap-input100 validate-input" data-validate = "Enter first name{{ $errors->has('first_name') ? ' has-error' : '' }}">
 
 
-                        <input class="input100" id="first_name" type="text" name="first_name" placeholder="First Name" value="{{ old('first_name') }}" required autofocus>
+                        <input class="input100" id="first_name" type="text" name="first_name" placeholder="eg: Godfrey" value="{{ old('first_name') }}" required autofocus>
                         <span class="focus-input100" data-placeholder="&#9991;"></span>
-
-                        @if ($errors->has('first_name'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('first_name') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
 
-                    <div class="wrap-input100 validate-input" data-validate = "Enter middle name{{ $errors->has('middle_name') ? ' has-error' : '' }}">
-
-
-                        <input class="input100" id="middle_name" type="text" name="middle_name" placeholder="Middle Name (Optional)" value="{{ old('middle_name') }}" required autofocus>
+                    <div class="wrap-input100">
+                        <input class="input100" id="middle_name" type="text" name="middle_name" placeholder="eg: Allen (Optional)">
                         <span class="focus-input100" data-placeholder="&#9991;"></span>
-
-                        @if ($errors->has('middle_name'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('middle_name') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter last name{{ $errors->has('lname') ? ' has-error' : '' }}">
 
 
-                        <input class="input100" id="last_name" type="text" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" required autofocus>
+                        <input class="input100" id="last_name" type="text" name="last_name" placeholder="eg: Jofrey" value="{{ old('last_name') }}" required autofocus>
                         <span class="focus-input100" data-placeholder="&#9991;"></span>
-
-                        @if ($errors->has('last_name'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('last_name') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter email{{ $errors->has('email') ? ' has-error' : '' }}">
 
 
-                        <input class="input100" id="email" type="email" name="email" placeholder="kajuma@gmail.com" value="{{ old('email') }}" required autofocus>
+                        <input class="input100" id="email" type="email" name="email" placeholder=" eg: example@yahoo.com" value="{{ old('email') }}" required autofocus>
                         <span class="focus-input100" data-placeholder="&#9993;"></span>
-
-                        @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
 
@@ -115,41 +89,24 @@
                     <div class="wrap-input100 validate-input" data-validate = "Enter phone number{{ $errors->has('phone_number') ? ' has-error' : '' }}">
 
 
-                        <input class="input100" id="phone_number" type="tel" name="phone_number" placeholder="+255 654 234 678" value="{{ old('phone_number') }}" required autofocus>
+                        <input class="input100" id="phone_number" type="number" name="phone_number" placeholder="eg: 0654234678" value="{{ old('phone_number') }}" required autofocus>
                         <span class="focus-input100" data-placeholder="&#9990;"></span>
-
-                        @if ($errors->has('phone_number'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('phone_number') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                        <input class="input100" id="password" type="password" name="password" placeholder="Password" required>
+                        <input class="input100" id="password" type="password" name="password" placeholder="eg: password" required>
 
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
-
-                        @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
                     </div>
 
-                    {{-- <div class="wrap-input100 validate-input" data-validate="Enter confirm password{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 
-                        <input class="input100" id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password" required>
+                    <div class="wrap-input100 validate-input" data-validate="Enter confirm password{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+
+                        <input class="input100" id="password_confirmation" type="password" name="password_confirmation" placeholder="eg: Confirm Password" required>
 
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
-
-                        @if ($errors->has('password_confirmation'))
-                        <span class="help-block">
-                            <strong style="color: #A94442;">{{ $errors->first('password_confirmation') }}</strong>
-                        </span>
-                        @endif
-                    </div> --}}
+                    </div>
 
                     <div class="container-login100-form-btn">
                         <button type="submit" class="login100-form-btn">
