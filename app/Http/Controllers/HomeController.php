@@ -64,17 +64,7 @@ class HomeController extends Controller
 
 
             // TRANSPORTER SIDE
-                $transporter_id = Auth::user()->id;
-
-                    $transporterTrucks= Truck::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
-                    ->get();
-                        $transporterchart = Charts::database($transporterTrucks, 'bar', 'highcharts')
-                        ->setTitle('All Trucks Chart')
-                        ->setElementLabel("Trucks")
-                        ->setLabels("users")
-                        ->setDimensions(1000, 500)
-                        ->setResponsive(true)
-                        ->groupByMonth(date('Y'), true);
+                    $transporter_id = Auth::user()->id;
 
                     $truckByTransporterCount = DB::table('trucks')
                         ->join('companies', 'trucks.company_id', '=', 'companies.id')
@@ -84,7 +74,35 @@ class HomeController extends Controller
                         'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.company_name', 'trucks.created_at')
                         ->where('companies.user_id', '=', $transporter_id)->count();
 
-                        // dd($truckByTransporterCount);
+
+                    $companyByTransporterCount = DB::table('companies')
+                    ->join('users', 'companies.user_id', '=', 'users.id')
+
+                    ->select('companies.id', 'companies.company_name', 'companies.tin', 'companies.vrn', 'companies.phone_number', 'companies.email', 'companies.website_link', 'companies.company_logo', 'companies.address',
+                        'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.created_at')
+                        ->where('companies.user_id', '=', $transporter_id)->count();
+
+
+                        // $transporterTrucks= Truck::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+                        // ->get();
+
+                        $transporterTrucks = DB::table('trucks')
+                            ->join('companies', 'trucks.company_id', '=', 'companies.id')
+                            ->join('users', 'trucks.user_id', '=', 'users.id')
+
+                            ->select('trucks.id', 'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.tonnage', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
+                            'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.company_name', 'trucks.created_at')
+                            ->where('companies.user_id', '=', $transporter_id)->get();
+
+                            $transporterchart = Charts::database($transporterTrucks, 'bar', 'highcharts')
+                            ->setTitle('All Trucks Chart')
+                            ->setElementLabel("Trucks")
+                            ->setLabels("users")
+                            ->setDimensions(1000, 500)
+                            ->setResponsive(true)
+                            ->groupByMonth(date('Y'), true);
+
+
             // TRANSPORTER SIDE
 
 
@@ -99,6 +117,7 @@ class HomeController extends Controller
             ->with('piechart', $piechart)
             ->with('transporterchart', $transporterchart)
             ->with('truckByTransporterCount', $truckByTransporterCount)
+            ->with('companyByTransporterCount', $companyByTransporterCount)
             ->with('totalfinanceCount', $totalfinanceCount);
     }
 }

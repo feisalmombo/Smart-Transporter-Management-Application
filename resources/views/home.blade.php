@@ -25,7 +25,7 @@
                                 <span class="info-box-icon bg-green"><i class="fa fa-building"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">No of Company Registered</span>
-                                    <span class="info-box-number">22</span>
+                                    <span class="info-box-number">{!! number_format($companyByTransporterCount, 2, '.', ',') !!}</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
