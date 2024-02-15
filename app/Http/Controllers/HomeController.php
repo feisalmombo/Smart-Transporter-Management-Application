@@ -55,7 +55,7 @@ class HomeController extends Controller
         $piecharttrucks= Truck::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
         ->get();
             $piechart = Charts::create('pie', 'highcharts')
-            ->setTitle('My nice chart')
+            ->setTitle('Trucks Chart')
             ->setLabels(['First', 'Second', 'Third'])
             ->setValues([5,10,20])
             ->setDimensions(1000,500)

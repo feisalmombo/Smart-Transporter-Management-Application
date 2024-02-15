@@ -175,7 +175,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
 
                   <div class="chart">
                     <canvas id="salesChart" style="height: 40px;"></canvas>
@@ -188,7 +188,7 @@
                 <!-- /.col -->
 
                 {{--  Loans Side  --}}
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <p class="text-center">
                     <strong>Records</strong>
                   </p>
