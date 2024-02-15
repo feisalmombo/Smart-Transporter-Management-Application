@@ -82,12 +82,12 @@ class CompaniesController extends Controller
             return redirect()->back();
         });
         $this->validate(request(), [
-            'company_name' => 'required',
-            'tin' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
+            'company_name' => 'required|string|max:255',
+            'tin' => 'required|numeric|digits:9',
+            'phone_number' => 'required|numeric|digits:10',
+            'email' => 'required|email',
             'company_logo' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
-            'address' => 'required',
+            'address' => 'required|string|max:255',
         ]);
 
         $company = new Company();
