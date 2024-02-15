@@ -40,7 +40,7 @@
                                 <span class="info-box-icon bg-yellow"><i class="fa fa-truck"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">No of Truck Registered</span>
-                                    <span class="info-box-number">23</span>
+                                    <span class="info-box-number"> {!! number_format($truckByTransporterCount, 2, '.', ',') !!}</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -75,7 +75,7 @@
                                             {!! Charts::assets() !!}
                                         </div>
 
-                                            {!! $chart->render() !!}
+                                            {!! $transporterchart->render() !!}
 
                                     </div>
                                 </div>

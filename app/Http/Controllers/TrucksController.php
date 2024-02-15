@@ -98,7 +98,7 @@ class TrucksController extends Controller
             'driver_passport_number' => 'required',
             'passport_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
             'licence_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
-            
+
         ]);
 
         $company =  Company::where('company_name', $request->company_id)->first();
