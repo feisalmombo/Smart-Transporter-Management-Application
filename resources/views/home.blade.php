@@ -111,7 +111,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
         <a href="#"  style="color: black">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-object-group"></i></span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-building"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">No of Company registered</span>
@@ -129,7 +129,7 @@
       {{--  row  --}}
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{{ url('/product/inquries') }}"  style="color: black">
+        <a href="#"  style="color: black">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-truck"></i></span>
 
@@ -144,12 +144,12 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="{{ url('/institution/types') }}"  style="color: black">
+        <a href="#"  style="color: black">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-university"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-bank"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">No of Finance</span>
+              <span class="info-box-text">No of Finance/Invoice</span>
               <span class="info-box-number">{{ $totalfinanceCount[0]->totalfinanceCount }}</span>
             </div>
             <!-- /.info-box-content -->
@@ -663,12 +663,12 @@
         <div class="col-md-4">
           <!-- Info Boxes Style 2 -->
           <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="fa fa-object-group"></i></span>
+            <span class="info-box-icon"><i class="fa fa-building"></i></span>
 
             <div class="info-box-content">
-                <a href="{{ url('/total/compare/loans') }}" style="color: white">
-              <span class="info-box-text">No of Compare</span>
-              <span class="info-box-number">33</span>
+                <a href="#" style="color: white">
+              <span class="info-box-text">All Company Registered</span>
+              <span class="info-box-number">{{ $companyregisteredCount[0]->companyregisteredCount }}</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 180%"></div>
@@ -679,12 +679,12 @@
           </div>
           <!-- /.info-box -->
           <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+            <span class="info-box-icon"><i class="fa fa-truck"></i></span>
 
             <div class="info-box-content">
-                <a href="{{ url('/total/loans/rejected/approved') }}" style="color: white">
-              <span class="info-box-text">Follow Ups</span>
-              <span class="info-box-number">33</span>
+                <a href="#" style="color: white">
+              <span class="info-box-text">All Trucks Registered</span>
+              <span class="info-box-number">{{ $totaltrucksCount[0]->totaltrucksCount }}</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 180%"></div>
@@ -698,9 +698,9 @@
             <span class="info-box-icon"><i class="fa fa-id-badge"></i></span>
 
             <div class="info-box-content">
-                <a href="{{ url('/subscriber-email') }}" style="color: white">
-              <span class="info-box-text">No of Subscribers</span>
-              <span class="info-box-number">33</span>
+                <a href="#" style="color: white">
+              <span class="info-box-text">All Finance/Invoice Created</span>
+              <span class="info-box-number">{{ $totalfinanceCount[0]->totalfinanceCount }}</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 180%"></div>
