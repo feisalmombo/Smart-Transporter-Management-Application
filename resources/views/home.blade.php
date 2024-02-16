@@ -295,7 +295,7 @@
                                 <div class="col-sm-8">
                                     <div class="chart">
                                         <canvas id="salesChart" style="height: 40px;"></canvas>
-                                        {!! Charts::assets() !!}
+                                        {{-- {!! Charts::assets() !!} --}}
                                     </div>
                                         {!! $chart->render() !!}
                                 </div>

@@ -47,7 +47,6 @@ class HomeController extends Controller
                 $chart = Charts::database($systemusers, 'bar', 'highcharts')
                 ->setTitle('All Users Chart')
                 ->setElementLabel("System Users")
-                ->setLabels("users")
                 ->setDimensions(1000, 500)
                 ->setResponsive(true)
                 ->groupByMonth(date('Y'), true);
