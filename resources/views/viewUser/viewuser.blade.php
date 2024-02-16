@@ -15,9 +15,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 List of system users
-
                 <a href="{{ url('/view-users/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add User</a>
-
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
@@ -33,19 +31,19 @@
                       <th>Email</th>
                       <th>Phone Number</th>
                       <th>Privilege</th>
-                      <?php if(Auth::user()->can('show_user')){?>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Show</th>
-                      <?php }?>
-                      <?php if(Auth::user()->can('edit_user')){?>
+                      @endif
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Edit</th>
-                      <?php }?>
-                      <?php if(Auth::user()->can('delete_user')){?>
+                      @endif
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Delete</th>
-                      <?php }?>
+                      @endif
 
-                      <?php if(Auth::user()->can('reset_password')){?>
-                      <th>Reset Pass</th>
-                      <?php }?>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
+                      <th>Reset Password</th>
+                      @endif
                       <th>Duration</th>
                     </tr>
                     </thead>
@@ -58,7 +56,7 @@
                                 <td class="center">{{ $userDatas->email }}</td>
                                 <td class="center">{{ $userDatas->phone_number }}</td>
                                 <td class="center">{{ $userDatas->slug  }}</td>
-                                <?php if(Auth::user()->can('show_user')){?>
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
                                     <a class="btn btn-info" data-toggle="modal" href='#{{ $userDatas->id."show" }}'><i class="fa fa-bullseye" arial-hidden="true"></i></a>
                                     <div class="modal fade" id="{{ $userDatas->id."show" }}">
@@ -184,14 +182,14 @@
                                         </div>
                                     </div>
                                 </td>
-                                <?php }?>
-                                <?php if(Auth::user()->can('edit_user')){?>
+                                @endif
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
                                     <a href="{{ url('/view-users/'.$userDatas->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
                                 </td>
-                                <?php }?>
+                                @endif
 
-                                <?php if(Auth::user()->can('delete_user')){?>
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
                                     <a href='#{{ $userDatas->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
                                     <div class="modal fade" id="{{ $userDatas->id }}">
@@ -219,16 +217,16 @@
                                         </div>
                                     </div>
                                 </td>
-                                <?php }?>
+                                @endif
 
-                                <?php if(Auth::user()->can('reset_password')){?>
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td><a href="/reset/{{$userDatas->id}}" >
                                     <span class="fa-passwd-reset fa-stack">
                                       <i class="fa fa-undo fa-stack-2x"></i>
                                       <i class="fa fa-lock fa-stack-1x"></i>
                                     </span></a>
                                 </td>
-                                <?php }?>
+                                @endif
                                 <td>{{date("F jS, Y", strtotime($userDatas->created_at))}}</td>
                             </tr>
                             @endforeach

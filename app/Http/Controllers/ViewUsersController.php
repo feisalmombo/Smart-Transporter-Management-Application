@@ -148,10 +148,8 @@ class ViewUsersController extends Controller
             return redirect()->back();
         });
         $user = User::findOrFail($id);
-        //return $user;
 
         $leve = Role::all();
-        //return $leve;
 
         return view('viewUser.edituser')->with('users', $user)->with('leve', $leve);
     }
@@ -164,7 +162,7 @@ class ViewUsersController extends Controller
             }
             return redirect()->back();
         });
-        // dd($id);
+        
         $user = User::findOrFail($id);
         $st = User::findOrFail($id)->update(['password' => bcrypt('123456')]);
         if (!$st) {
