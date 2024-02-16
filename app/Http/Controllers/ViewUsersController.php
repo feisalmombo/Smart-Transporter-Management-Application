@@ -162,7 +162,7 @@ class ViewUsersController extends Controller
             }
             return redirect()->back();
         });
-        
+
         $user = User::findOrFail($id);
         $st = User::findOrFail($id)->update(['password' => bcrypt('123456')]);
         if (!$st) {
@@ -223,6 +223,7 @@ class ViewUsersController extends Controller
             return redirect()->back();
         });
         $uid = \Auth::id();
+        // $uid = \Auth::user()->id;
         $user = User::findOrFail($id);
         $user->delete();
         ActivityLog::where('changetype', 'Delete User')->update(['user_id' => $uid]);
