@@ -85,7 +85,7 @@ class ChangePasswordController extends Controller
         $pass = $user->password;
 
         $this->validate(request(), [
-            'old_password' => 'required',
+            'old_password' => 'required|min:6',
             'new_password' => 'required|min:6',
             'conf_password' => 'required|min:6',
         ]);
@@ -96,13 +96,13 @@ class ChangePasswordController extends Controller
                     'password' => Hash::make($request->new_password)
                 ])->save();
 
-                return redirect()->back()->with('message', 'Your password has been changed.');
+                return redirect()->back()->with('message', 'Password Updated Successfully.');
             } else {
-                $request->session()->flash('message', 'Your new or current password   is incorrect.');
+                $request->session()->flash('error', 'Your new or current password   is incorrect.');
                 return back();
             }
         } else {
-            $request->session()->flash('message', 'Your new password does not match.');
+            $request->session()->flash('error', 'Your new password does not match.');
             return redirect()->back();
         }
     }
@@ -141,11 +141,11 @@ class ChangePasswordController extends Controller
 
                 return redirect('/home')->with('message', 'Your password has been changed.');
             } else {
-                $request->session()->flash('message', 'Your new or current password   is incorrect.');
+                $request->session()->flash('error', 'Your new or current password   is incorrect.');
                 return back();
             }
         } else {
-            $request->session()->flash('message', 'Your new password does not match.');
+            $request->session()->flash('error', 'Your new password does not match.');
             return redirect()->back();
         }
     }
