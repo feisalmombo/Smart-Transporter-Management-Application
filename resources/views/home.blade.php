@@ -12,7 +12,8 @@
                         </h1>
 
                         <p style="color: black">
-                            <strong>Welcome To Smart Transporter Management Application(STMA)</strong>
+                            <strong style="font-size: 18px">Welcome <strong style="color: blueviolet">{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</strong> To Smart Transporter Management Application(STMA)</strong>
+
                         </p>
 
                 <!-- /.row -->
@@ -97,7 +98,7 @@
                     </h1>
 
                     <p style="color: black">
-                        <strong>Welcome To Smart Transporter Management Application(STMA)</strong>
+                        <strong style="font-size: 18px">Welcome <strong style="color: blueviolet">{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</strong> To Smart Transporter Management Application(STMA)</strong>
                     </p>
             <!-- 1 row -->
             <div class="row">

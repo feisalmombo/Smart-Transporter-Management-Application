@@ -51,13 +51,17 @@
 <!-- User Account: style can be found in dropdown.less -->
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <?php $i = 0;?>
         @foreach(App\Role::All() as $role)
-        @if(Auth::user()->hasRole($role->slug)),
+        @if(Auth::user()->hasRole($role->slug))
+        <?php $i++;?>
+        @if($i>1)
+            ,
+        @endif
         {{$role->name}}
         @endif
-   @endforeach
-
-   {!!": <strong>".Auth::user()->first_name."</i></strong>"!!} <i class="fa fa-caret-down"></i>
+        @endforeach
+        {!!": <strong>".Auth::user()->first_name."</i></strong>"!!} <i class="fa fa-caret-down"></i>
     </a>
     <ul class="dropdown-menu">
 
