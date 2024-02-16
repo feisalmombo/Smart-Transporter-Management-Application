@@ -95,7 +95,7 @@ class TrucksController extends Controller
             'driver_full_name' => 'required|string|max:255',
             'driver_phone_number' => 'required|numeric|digits:10',
             'driver_licence_number' => 'required|numeric|digits:10',
-            'driver_passport_number' => 'required|string|digits:9',
+            'driver_passport_number' => 'required|alpha_num:9',
             'passport_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
             'licence_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
         ]);
