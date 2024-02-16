@@ -15,9 +15,9 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 List of system users
-                
+
                 <a href="{{ url('/view-users/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add User</a>
-              
+
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
@@ -29,7 +29,6 @@
                     <tr>
                       <th>S/N</th>
                       <th>First Name</th>
-                      <th>Middle Name</th>
                       <th>Last Name</th>
                       <th>Email</th>
                       <th>Phone Number</th>
@@ -55,7 +54,6 @@
                             <tr class="odd gradeX">
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $userDatas->first_name }}</td>
-                                <td>{{ $userDatas->middle_name }}</td>
                                 <td class="center">{{ $userDatas->last_name }}</td>
                                 <td class="center">{{ $userDatas->email }}</td>
                                 <td class="center">{{ $userDatas->phone_number }}</td>

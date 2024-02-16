@@ -52,8 +52,7 @@ class ViewUsersController extends Controller
             users_roles.role_id = roles.id AND users_roles.user_id = users.id
         ORDER BY users.created_at"
         );
-        // dd($userData);
-        // return $userData;
+
         return view('viewUser.viewuser')->with('userData', $userData);
     }
 

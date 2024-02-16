@@ -28,8 +28,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ url('/view-users') }}"><i class="fa fa-users"></i> Users</a></li>
-        </ul>  
+          <li><a href="{{ url('/view-users') }}"><i class="fa fa-users"></i>View Users</a></li>
+
+            <li>
+                <a href="{{ url('/view-users/create') }}"><i class="fa fa-user">
+                    </i> Add User</a>
+            </li>
+        </ul>
       </li>
       @endif
 
@@ -143,17 +148,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-       
+
           <li>
           <a href="{{ url('/settings/manage_users/permissions') }}"><i class="fa fa-circle-o"></i> View Permission</a>
-          </li>
-
-          <li>
-          <a href="{{ url('/settings/manage_users/permissions/entrust_role') }}"><i class="fa fa-circle-o"></i> Assign Permissions to Role</a>
-          </li>
-
-          <li>
-          <a href="{{ url('/settings/manage_users/permissions/entrust_user') }}"><i class="fa fa-circle-o"></i> Entrust Permission to User</a>
           </li>
         </ul>
       </li>
@@ -170,17 +167,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        
+
           <li>
           <a href="{{ url('/settings/manage_users/roles') }}"><i class="fa fa-circle-o"></i> View Roles</a>
           </li>
 
-          <li>
-          <a href="{{ url('/settings/manage_users/roles/create') }}"><i class="fa fa-circle-o"></i> Entrust Role to User</a>
-          </li>
-          
         </ul>
-     
+
       </li>
       @endif
     </ul>
