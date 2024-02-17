@@ -236,7 +236,7 @@
                                                         <h4 class="modal-title"><strong>Delete</strong></h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete Company?<h9 style="color: blue;">{{ $companyData->company_name." with TIN ".$companyData->tin }}</h9>
+                                                        Are you sure you want to delete Company Name?<h9 style="color: blue;"> {{ $companyData->company_name." with TIN: ".$companyData->tin }}</h9>
                                                     </div>
                                                     <form action="/view/companies/{{ $companyData->id  }}" method="POST" role="form">
 

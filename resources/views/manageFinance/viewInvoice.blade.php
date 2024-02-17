@@ -22,7 +22,7 @@
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 
-                
+
 				@if(!empty($financeDatas))
 
                 <div class="box-body">
@@ -39,13 +39,13 @@
                       <th>Advance Payment</th>
                       <th>Balance Payment</th>
                       <th>Waiting Charges</th>
-                      <th>Loading Place</th>
+                      {{-- <th>Loading Place</th> --}}
                       <th>Current Location</th>
                       <th>Destination</th>
                       <th>Remarks</th>
-                      {{-- <th>Show</th>
+                      <th>Show</th>
                       <th>Edit</th>
-                      <th>Delete</th> --}}
+                      <th>Delete</th>
                       <th>Duration</th>
                     </tr>
                     </thead>
@@ -62,12 +62,12 @@
                                 <td class="center">{{ $financeData->advance_payment }}</td>
                                 <td class="center">{{ $financeData->balance_payment }}</td>
                                 <td class="center">{{ $financeData->waiting_charges }}</td>
-                                <td class="center">{{ $financeData->loading_place }}</td>
+                                {{-- <td class="center">{{ $financeData->loading_place }}</td> --}}
                                 <td class="center">{{ $financeData->current_position }}</td>
                                 <td class="center">{{ $financeData->destination }}</td>
                                 <td class="center">{{ $financeData->remarks }}</td>
-                                
-                                {{-- <td>
+
+                                <td>
                                     <a class="btn btn-info" data-toggle="modal" href='#{{ $financeData->id."show" }}'><i class="fa fa-bullseye" arial-hidden="true"></i></a>
                                     <div class="modal fade" id="{{ $financeData->id."show" }}">
                                         <div class="modal-dialog">
@@ -81,7 +81,7 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Company Name: </label>
+                                                            <label>Invoice Number: </label>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -89,7 +89,7 @@
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $financeData->company_name }}
+                                                            {{ $financeData->invoice_number }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -100,14 +100,14 @@
                                                         <div class="col-sm-3">
                                                          <div class="center-block">
                                                             <div class="form-group">
-                                                                <label>TIN: </label>
+                                                                <label>Truck Number: </label>
                                                             </div>
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-9">
                                                            <div class="center-block">
                                                             <div class="form-group">
-                                                                {{ $financeData->tin }}
+                                                                {{ $financeData->truck_number }}
                                                             </div>
                                                         </div>
                                                         </div>
@@ -118,14 +118,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>VRN: </label>
+                                                            <label>Trailer Number: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $financeData->vrn }}
+                                                            {{ $financeData->trailer_number }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -136,14 +136,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Phone Number: </label>
+                                                            <label>Tonnage: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $financeData->phone_number }}
+                                                            {{ $financeData->tonnage }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -154,14 +154,14 @@
                                                         <div class="col-sm-3">
                                                          <div class="center-block">
                                                             <div class="form-group">
-                                                                <label>Email: </label>
+                                                                <label>Commodity Description: </label>
                                                             </div>
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-9">
                                                            <div class="center-block">
                                                             <div class="form-group">
-                                                                {{ $financeData->email }}
+                                                                {{ $financeData->commodity_description }}
                                                             </div>
                                                         </div>
                                                         </div>
@@ -172,33 +172,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Website Link: </label>
+                                                            <label>Price Per Tonnage: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $financeData->website_link }}
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                  </div>
-                                                  <hr>
-
-
-                                                  <div class="row">
-                                                    <div class="col-sm-3">
-                                                     <div class="center-block">
-                                                        <div class="form-group">
-                                                            <label>Company logo: </label>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                       <div class="center-block">
-                                                        <div class="form-group">
-                                                            <a href="{{ Storage::url($financeData->company_logo) }}" target="_blank" type="button" class="btn btn-danger"><i class="fa fa-download" arial-hidden="true"></i></a>
+                                                            {{ $financeData->price_per_tonnage }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -209,14 +190,50 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Address: </label>
+                                                            <label>Balance Payment: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $financeData->address }}
+                                                            {{ $financeData->balance_payment }}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+
+                                                  <div class="row">
+                                                    <div class="col-sm-3">
+                                                     <div class="center-block">
+                                                        <div class="form-group">
+                                                            <label>Current Position: </label>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                       <div class="center-block">
+                                                        <div class="form-group">
+                                                            {{ $financeData->current_position }}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+
+                                                  <div class="row">
+                                                    <div class="col-sm-3">
+                                                     <div class="center-block">
+                                                        <div class="form-group">
+                                                            <label>Destination: </label>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                       <div class="center-block">
+                                                        <div class="form-group">
+                                                            {{ $financeData->destination }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -229,13 +246,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </td> --}}
+                                </td>
 
-                                {{-- <td>
-                                        <a href="{{ url('/view/invoice/'.$financeData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
-                                </td> --}}
+                                <td>
+                                        <a href="{{ url('/view/invoices/'.$financeData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
+                                </td>
 
-                                {{-- <td>
+                                <td>
                                         <a href='#{{ $financeData->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
                                         <div class="modal fade" id="{{ $financeData->id }}">
                                             <div class="modal-dialog">
@@ -245,7 +262,7 @@
                                                         <h4 class="modal-title"><strong>Delete</strong></h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete Invoice?<h9 style="color: blue;">{{ $financeData->company_name." ".$financeData->tin }}</h9>
+                                                        Are you sure you want to delete Invoice Number?<h9 style="color: blue;"> {{ $financeData->invoice_number." with Truck Number: ".$financeData->truck_number }}</h9>
                                                     </div>
                                                     <form action="/view/companies/{{ $financeData->id  }}" method="POST" role="form">
 
@@ -261,7 +278,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </td> --}}
+                                </td>
 
                                 <td>{{date("F jS, Y", strtotime($financeData->created_at))}}</td>
                             </tr>

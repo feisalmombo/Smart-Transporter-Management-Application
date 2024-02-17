@@ -9,6 +9,7 @@ use App\Truck;
 use App\UsersRole;
 use DB;
 use Auth;
+use App\ActivityLog;
 
 class FinancesController extends Controller
 {
@@ -35,7 +36,7 @@ class FinancesController extends Controller
         });
 
 
-        // $singleUser = Auth::user()->id;
+        $singleUser = Auth::user()->id;
 
         $financeData = DB::table('finances')
             ->join('users', 'finances.customer_id', '=', 'users.id')
@@ -44,13 +45,19 @@ class FinancesController extends Controller
             ->select('finances.id', 'finances.tonnage', 'finances.invoice_number', 'finances.price_per_tonnage', 'finances.commodity_description', 'finances.advance_payment', 'finances.balance_payment', 'finances.waiting_charges', 'finances.loading_place', 'finances.status', 'finances.arrived_date', 'finances.loaded_date', 'finances.dispatch_date', 'finances.current_position', 'finances.destination', 'finances.remarks',
              'users.first_name', 'users.middle_name', 'users.last_name', 'users.email',
              'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
-             'finances.created_at')->get();
-            //  ->where('finances.user_id', '=', $singleUser)->get();
+             'finances.created_at')
+             ->where('finances.customer_id', '=', $singleUser)->get();
 
         // return json_encode($financeData);
 
 
         return view('manageFinance.viewInvoice')->with('financeDatas', $financeData);
+    }
+
+
+    public function allinvoice()
+    {
+        //
     }
 
     /**
@@ -72,7 +79,7 @@ class FinancesController extends Controller
             ->join('users', 'trucks.user_id', '=', 'users.id')
 
             ->select('trucks.id', 'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.tonnage', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
-            'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.company_name', 'trucks.created_at')
+            'users.first_name', 'users.middle_name', 'users.last_name', 'companies.company_name', 'trucks.created_at')
             ->get();
 
 
@@ -135,21 +142,21 @@ class FinancesController extends Controller
         $invoice->waiting_charges = $waitingCharges;
 
 
-        $invoice->payment_received_from = $request->$payment_received_from;
-        $invoice->payment_date = $request->$payment_date;
-        $invoice->pod_status = $request->$pod_status;
-        $invoice->pod_attached_shared = $request->$pod_attached_shared;
-        $invoice->attached_file_paid = $request->$attached_file_paid;
+        // $invoice->payment_received_from = $request->$payment_received_from;
+        // $invoice->payment_date = $request->$payment_date;
+        // $invoice->pod_status = $request->$pod_status;
+        // $invoice->pod_attached_shared = $request->$pod_attached_shared;
+        // $invoice->attached_file_paid = $request->$attached_file_paid;
 
 
-        $invoice->loading_place = $request->loading_place;
+        // $invoice->loading_place = $request->loading_place;
         $invoice->status = $request->status;
         $invoice->arrived_date = $request->arrived_date;
         $invoice->loaded_date = $request->loaded_date;
         $invoice->dispatch_date = $request->dispatch_date;
         $invoice->current_position = $request->current_position;
 
-        $invoice->gprs_coordinate_point = $request->gprs_coordinate_point;
+        // $invoice->gprs_coordinate_point = $request->gprs_coordinate_point;
 
         $invoice->destination = $request->destination;
         $invoice->remarks = $request->remarks;
@@ -205,8 +212,22 @@ class FinancesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('delete_finance_invoice')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+
+        $uid = \Auth::id();
+        $invoice = Finance::findOrFail($id);
+        $invoice->delete();
+        ActivityLog::where('changetype', 'Delete Finance Invoice')->update(['user_id' => $uid]);
+
+
+        $request->session()->flash('message', 'Finance Invoice is successfully deleted');
+        return back();
     }
 }

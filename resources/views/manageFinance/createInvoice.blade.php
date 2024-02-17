@@ -43,7 +43,7 @@
 
                                         <div class="form-group">
                                             <label>Advance Payment (USD): </label>
-                                            <input class="form-control" name="advance_payment" type="number" placeholder="eg: 8000">
+                                            <input class="form-control" name="advance_payment" placeholder="eg: 8000">
                                         </div>
 
                                         <div class="form-group">

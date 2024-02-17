@@ -108,21 +108,21 @@
                     <div class="row">
                         <!-- fix for small devices only -->
                         <div class="clearfix visible-sm-block"></div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        {{-- <div class="col-md-3 col-sm-6 col-xs-12">
                             <a href="#"  style="color: black">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-green"><i class="fa fa-truck"></i></span>
                                     <div class="info-box-content">
                                         <span class="info-box-text">No of Trucks Assigned</span>
                                         <span class="info-box-number">
-                                            {{-- {!! number_format($companyByTransporterCount, 2, '.', ',') !!} --}}
+                                            89
                                         </span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
                                 <!-- /.info-box -->
                             </a>
-                        </div>
+                        </div> --}}
 
                         <!-- /.col -->
                         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -132,7 +132,7 @@
                                     <div class="info-box-content">
                                         <span class="info-box-text">No of Invoice Assigned</span>
                                         <span class="info-box-number">
-                                            {{-- {!! number_format($truckByTransporterCount, 2, '.', ',') !!} --}}
+                                            {!! number_format($financeInvoiceCount, 2, '.', ',') !!}
                                         </span>
                                     </div>
                                     <!-- /.info-box-content -->

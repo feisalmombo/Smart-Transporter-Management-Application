@@ -102,9 +102,16 @@
         </a>
         <ul class="treeview-menu">
 
+        @if(Auth::user()->hasRole('customer'))
         <li>
               <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
                   </i> View Invoices</a>
+        </li>
+        @endif
+
+        <li>
+            <a href="#"><i class="fa fa-circle-o">
+                </i> View All Invoices</a>
         </li>
 
         <li>

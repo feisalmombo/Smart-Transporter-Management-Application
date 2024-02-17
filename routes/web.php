@@ -73,6 +73,9 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::resource('/view/invoices', 'FinancesController');
             Route::post('/view/invoices', 'FinancesController@store');
 
+            // VIEW ALL DETAILS ROUTE
+            Route::get('/view/all/invoices', 'FinancesController@allinvoice');
+
 
             //ROUTES FOR PERMISSIONS
             //Call entrust users view
