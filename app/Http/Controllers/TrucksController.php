@@ -147,7 +147,23 @@ class TrucksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('edit_truck')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+
+        $truck = Truck::findOrFail($id);
+
+        $singleTransporter = Auth::user()->id;
+
+        $company = DB::table('companies')
+            ->select('id', 'company_name')
+            ->where('companies.user_id', '=', $singleTransporter)
+            ->get();
+
+        return view('manageTruck.editTruck')->with('trucks', $truck)->with('companies', $company);
     }
 
     /**
@@ -159,7 +175,49 @@ class TrucksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('update_vehicle')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+        $truck = Truck::findOrFail($id);
+        $this->validate(request(), [
+            'truck_number' => 'required|string|max:255',
+            'trailer_number' => 'required|string|max:255',
+            'tonnage' => 'required',
+            'driver_full_name' => 'required|string|max:255',
+            'driver_phone_number' => 'required|numeric|digits:10',
+            'driver_licence_number' => 'required|numeric|digits:10',
+            'driver_passport_number' => 'required|alpha_num:9',
+            'passport_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
+            'licence_attachment' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
+        ]);
+
+        $company =  Company::where('company_name', $request->company_id)->first();
+
+        // return json_encode($company);
+
+        $truck->truck_number = $request->truck_number;
+        $truck->trailer_number = $request->trailer_number;
+        $truck->dengla_number = $request->dengla_number;
+        $truck->tonnage = $request->tonnage;
+        $truck->container_number = $request->container_number;
+        $truck->driver_full_name = $request->driver_full_name;
+        $truck->driver_phone_number = $request->driver_phone_number;
+        $truck->driver_licence_number = $request->driver_licence_number;
+        $truck->driver_passport_number = $request->driver_passport_number;
+        $truck->passport_attachment = $request->passport_attachment->store('Passportattachments', 'public');
+        $truck->licence_attachment = $request->licence_attachment->store('Licenseattachments', 'public');
+        $truck->user_id = Auth::user()->id;
+        $truck->company_id = $company->id;
+        $st = $truck->save();
+
+        if (!$st) {
+            return redirect()->back()->with('message', 'Failed to Update Truck data');
+        } else {
+            return redirect('/view/trucks')->with('message', 'Truck is successfully updated');
+        }
     }
 
     /**
@@ -168,8 +226,21 @@ class TrucksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('delete_truck')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+        $uid = \Auth::id();
+        $truck = Truck::findOrFail($id);
+        $truck->delete();
+        ActivityLog::where('changetype', 'Delete Truck')->update(['user_id' => $uid]);
+
+
+        $request->session()->flash('message', 'Truck is successfully deleted');
+        return back();
     }
 }

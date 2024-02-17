@@ -90,6 +90,98 @@
         </section>
     @endif
 
+
+
+            {{-- CUSTOMER HEADER --}}
+            @if(Auth::user()->hasRole('customer'))
+            <section class="content">
+                            <h1>
+                                <strong>Customer Page</strong>
+                            </h1>
+
+                            <p style="color: black">
+                                <strong style="font-size: 18px">Welcome <strong style="color: blueviolet">{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</strong> To Smart Transporter Management Application(STMA)</strong>
+
+                            </p>
+
+                    <!-- /.row -->
+                    <div class="row">
+                        <!-- fix for small devices only -->
+                        <div class="clearfix visible-sm-block"></div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="#"  style="color: black">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-green"><i class="fa fa-truck"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">No of Trucks Assigned</span>
+                                        <span class="info-box-number">
+                                            {{-- {!! number_format($companyByTransporterCount, 2, '.', ',') !!} --}}
+                                        </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </a>
+                        </div>
+
+                        <!-- /.col -->
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="#"  style="color: black">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-yellow"><i class="fa fa-file"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">No of Invoice Assigned</span>
+                                        <span class="info-box-number">
+                                            {{-- {!! number_format($truckByTransporterCount, 2, '.', ',') !!} --}}
+                                        </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    {{-- <div class="clearfix visible-sm-block"></div>
+                    <br>
+                    <div class="row">
+                        <!-- Left col -->
+                        <div class="col-md-12">
+                            <!-- MAP & BOX PANE -->
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">All Trucks Registered</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+
+                                <div class="box-body no-padding">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="chart">
+                                                <canvas id="salesChart" style="height: 40px;"></canvas>
+                                                {!! Charts::assets() !!}
+                                            </div>
+
+                                                {!! $transporterchart->render() !!}
+
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div> --}}
+            </section>
+        @endif
+
       {{-- DEVELOPER HEADER --}}
     @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
         <section class="content">

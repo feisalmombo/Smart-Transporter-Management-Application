@@ -36,7 +36,9 @@
                       <th>Email</th>
                       <th>Address</th>
                       <th>Show</th>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Edit</th>
+                      @endif
                       @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Delete</th>
                       @endif
@@ -217,9 +219,11 @@
                                     </div>
                                 </td>
 
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
-                                        <a href="{{ url('/view/companies/'.$companyData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
+                                    <a href="{{ url('/view/companies/'.$companyData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
                                 </td>
+                                @endif
 
                                 @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>

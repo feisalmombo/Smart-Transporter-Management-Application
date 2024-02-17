@@ -15,14 +15,14 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 List of trucks
-             
+
                 <a href="{{ url('/view/trucks/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add Truck</a>
-               
+
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 
-                
+
 				@if(!empty($truckDatas))
 
                 <div class="box-body">
@@ -40,9 +40,14 @@
                       <th>Driver Passport Number</th>
                       <th>Passport Attachment</th>
                       <th>Licence Attachment</th>
-                      {{-- <th>Show</th>
+                      <th>Show</th>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Edit</th>
-                      <th>Delete</th> --}}
+                      @endif
+
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
+                      <th>Delete</th>
+                      @endif
                       <th>Duration</th>
                     </tr>
                     </thead>
@@ -64,8 +69,8 @@
                                 <td class="center">
                                     <a href="{{ Storage::url($truckData->licence_attachment) }}" target="_blank" type="button" class="btn btn-danger"><i class="fa fa-download" arial-hidden="true"></i></a>
                                 </td>
-                                
-                                {{-- <td>
+
+                                <td>
                                     <a class="btn btn-info" data-toggle="modal" href='#{{ $truckData->id."show" }}'><i class="fa fa-bullseye" arial-hidden="true"></i></a>
                                     <div class="modal fade" id="{{ $truckData->id."show" }}">
                                         <div class="modal-dialog">
@@ -98,14 +103,14 @@
                                                         <div class="col-sm-3">
                                                          <div class="center-block">
                                                             <div class="form-group">
-                                                                <label>TIN: </label>
+                                                                <label>Truck Number: </label>
                                                             </div>
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-9">
                                                            <div class="center-block">
                                                             <div class="form-group">
-                                                                {{ $truckData->tin }}
+                                                                {{ $truckData->truck_number }}
                                                             </div>
                                                         </div>
                                                         </div>
@@ -116,14 +121,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>VRN: </label>
+                                                            <label>Trailer Number: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $truckData->vrn }}
+                                                            {{ $truckData->trailer_number }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -134,14 +139,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Phone Number: </label>
+                                                            <label>Tonnage: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $truckData->phone_number }}
+                                                            {{ $truckData->tonnage }}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -152,14 +157,14 @@
                                                         <div class="col-sm-3">
                                                          <div class="center-block">
                                                             <div class="form-group">
-                                                                <label>Email: </label>
+                                                                <label>Driver Name: </label>
                                                             </div>
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-9">
                                                            <div class="center-block">
                                                             <div class="form-group">
-                                                                {{ $truckData->email }}
+                                                                {{ $truckData->driver_full_name }}
                                                             </div>
                                                         </div>
                                                         </div>
@@ -170,14 +175,14 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Website Link: </label>
+                                                            <label>Password Attachment: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            {{ $truckData->website_link }}
+                                                            <a href="{{ Storage::url($truckData->passport_attachment) }}" target="_blank" type="button" class="btn btn-danger"><i class="fa fa-download" arial-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -189,36 +194,19 @@
                                                     <div class="col-sm-3">
                                                      <div class="center-block">
                                                         <div class="form-group">
-                                                            <label>Company logo: </label>
+                                                            <label>Licence Attachment: </label>
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div class="col-sm-9">
                                                        <div class="center-block">
                                                         <div class="form-group">
-                                                            <a href="{{ Storage::url($truckData->company_logo) }}" target="_blank" type="button" class="btn btn-danger"><i class="fa fa-download" arial-hidden="true"></i></a>
+                                                            <a href="{{ Storage::url($truckData->licence_attachment) }}" target="_blank" type="button" class="btn btn-danger"><i class="fa fa-download" arial-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                     </div>
                                                   </div>
                                                   <hr>
-
-                                                  <div class="row">
-                                                    <div class="col-sm-3">
-                                                     <div class="center-block">
-                                                        <div class="form-group">
-                                                            <label>Address: </label>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                       <div class="center-block">
-                                                        <div class="form-group">
-                                                            {{ $truckData->address }}
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                  </div>
 
                                                   </div>
                                                 <div class="modal-footer">
@@ -227,13 +215,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                </td> --}}
+                                </td>
 
-                                {{-- <td>
-                                        <a href="{{ url('/view/trucks/'.$truckData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
-                                </td> --}}
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
+                                <td>
+                                    <a href="{{ url('/view/trucks/'.$truckData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
+                                </td>
+                                @endif
 
-                                {{-- <td>
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
+                                <td>
                                         <a href='#{{ $truckData->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
                                         <div class="modal fade" id="{{ $truckData->id }}">
                                             <div class="modal-dialog">
@@ -243,7 +234,7 @@
                                                         <h4 class="modal-title"><strong>Delete</strong></h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete Company?<h9 style="color: blue;">{{ $truckData->company_name." ".$truckData->tin }}</h9>
+                                                        Are you sure you want to delete Company?<h9 style="color: blue;">{{ $truckData->company_name }}</h9>
                                                     </div>
                                                     <form action="/view/trucks/{{ $truckData->id  }}" method="POST" role="form">
 
@@ -259,7 +250,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </td> --}}
+                                </td>
+                                @endif
 
                                 <td>{{date("F jS, Y", strtotime($truckData->created_at))}}</td>
                             </tr>
