@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use DB;
 use Auth;
+use App\ActivityLog;
 
 class CompaniesController extends Controller
 {
@@ -192,8 +193,21 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('delete_company')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+        $uid = \Auth::id();
+        $company = Company::findOrFail($id);
+        $company->delete();
+        ActivityLog::where('changetype', 'Delete Company')->update(['user_id' => $uid]);
+
+
+        $request->session()->flash('message', 'Company is successfully deleted');
+        return back();
     }
 }
