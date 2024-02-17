@@ -60,7 +60,7 @@
                         <!-- MAP & BOX PANE -->
                         <div class="box box-success">
                             <div class="box-header with-border">
-                                <h3 class="box-title">All Trucks Registered</h3>
+                                <h3 class="box-title">Trucks Chart</h3>
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -144,7 +144,7 @@
                     </div>
                     <!-- /.row -->
 
-                    {{-- <div class="clearfix visible-sm-block"></div>
+                    <div class="clearfix visible-sm-block"></div>
                     <br>
                     <div class="row">
                         <!-- Left col -->
@@ -152,7 +152,7 @@
                             <!-- MAP & BOX PANE -->
                             <div class="box box-success">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">All Trucks Registered</h3>
+                                    <h3 class="box-title">Invoice Finance Chart</h3>
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -168,7 +168,7 @@
                                                 {!! Charts::assets() !!}
                                             </div>
 
-                                                {!! $transporterchart->render() !!}
+                                                {!! $customerchart->render() !!}
 
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                             </div>
                         </div>
                         <!-- /.col -->
-                    </div> --}}
+                    </div>
             </section>
         @endif
 

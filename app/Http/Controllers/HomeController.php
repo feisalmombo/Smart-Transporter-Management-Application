@@ -46,7 +46,7 @@ class HomeController extends Controller
             ->get();
                 $chart = Charts::database($systemusers, 'bar', 'highcharts')
                 ->setTitle('All Users Chart')
-                ->setElementLabel("System Users")
+                ->setElementLabel("Users")
                 ->setDimensions(1000, 500)
                 ->setResponsive(true)
                 ->groupByMonth(date('Y'), true);
@@ -92,7 +92,7 @@ class HomeController extends Controller
                         $transporterchart = Charts::database($transporterTrucks, 'bar', 'highcharts')
                         ->setTitle('All Trucks Chart')
                         ->setElementLabel("Trucks")
-                        ->setLabels("users")
+                        ->setLabels("trucks")
                         ->setDimensions(1000, 500)
                         ->setResponsive(true)
                         ->groupByMonth(date('Y'), true);
@@ -113,6 +113,24 @@ class HomeController extends Controller
                  ->where('finances.customer_id', '=', $customerPrivilage)->count();
 
                 //  return json_encode($financeInvoiceCount);
+
+                $customerInvoiceChart = DB::table('finances')
+                ->join('users', 'finances.customer_id', '=', 'users.id')
+                ->join('trucks', 'finances.truck_id', '=', 'trucks.id')
+
+                ->select('finances.id', 'finances.tonnage', 'finances.invoice_number', 'finances.price_per_tonnage', 'finances.commodity_description', 'finances.advance_payment', 'finances.balance_payment', 'finances.waiting_charges', 'finances.loading_place', 'finances.status', 'finances.arrived_date', 'finances.loaded_date', 'finances.dispatch_date', 'finances.current_position', 'finances.destination', 'finances.remarks',
+                 'users.first_name', 'users.middle_name', 'users.last_name', 'users.email',
+                 'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
+                 'finances.created_at')
+                 ->where('finances.customer_id', '=', $customerPrivilage)->get();
+
+                        $customerchart = Charts::database($customerInvoiceChart, 'bar', 'highcharts')
+                        ->setTitle('All Invoice Finance')
+                        ->setElementLabel("Invoices")
+                        ->setLabels("invoice")
+                        ->setDimensions(1000, 500)
+                        ->setResponsive(true)
+                        ->groupByMonth(date('Y'), true);
             // CUSTOMER SIDE
 
 
@@ -126,6 +144,7 @@ class HomeController extends Controller
             ->with('chart', $chart)
             ->with('piechart', $piechart)
             ->with('transporterchart', $transporterchart)
+            ->with('customerchart', $customerchart)
             ->with('truckByTransporterCount', $truckByTransporterCount)
             ->with('companyByTransporterCount', $companyByTransporterCount)
             ->with('totalfinanceCount', $totalfinanceCount)
