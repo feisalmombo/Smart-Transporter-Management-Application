@@ -44,8 +44,13 @@
                       <th>Destination</th>
                       <th>Remarks</th>
                       <th>Show</th>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Edit</th>
+                      @endif
+
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Delete</th>
+                      @endif
                       <th>Duration</th>
                     </tr>
                     </thead>
@@ -248,10 +253,13 @@
                                     </div>
                                 </td>
 
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
-                                        <a href="{{ url('/view/invoices/'.$financeData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
+                                    <a href="{{ url('/view/invoices/'.$financeData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
                                 </td>
+                                @endif
 
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
                                         <a href='#{{ $financeData->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
                                         <div class="modal fade" id="{{ $financeData->id }}">
@@ -279,6 +287,7 @@
                                             </div>
                                         </div>
                                 </td>
+                                @endif
 
                                 <td>{{date("F jS, Y", strtotime($financeData->created_at))}}</td>
                             </tr>
