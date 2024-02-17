@@ -191,7 +191,33 @@ class FinancesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('edit_truck')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+
+        $invoice = Finance::findOrFail($id);
+
+        $alltrucks = DB::table('trucks')
+            ->join('companies', 'trucks.company_id', '=', 'companies.id')
+            ->join('users', 'trucks.user_id', '=', 'users.id')
+
+            ->select('trucks.id', 'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.tonnage', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
+            'users.first_name', 'users.middle_name', 'users.last_name', 'companies.company_name', 'trucks.created_at')
+            ->get();
+
+
+        $customers = DB::table('users_roles')
+        ->join('roles', 'users_roles.role_id', '=', 'roles.id')
+        ->join('users', 'users_roles.user_id', '=', 'users.id')
+
+        ->select('roles.slug', 'roles.name',
+        'users.first_name', 'users.middle_name', 'users.last_name', 'users.email')
+        ->where('roles.name', '=', "customer")->get();
+
+        return view('manageFinance.editInvoice')->with('invoices', $invoice)->with('customers', $customers)->with('alltrucks', $alltrucks);
     }
 
     /**
@@ -203,7 +229,76 @@ class FinancesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('update_invoice')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+
+        $invoice = Finance::findOrFail($id);
+        $this->validate(request(), [
+            'tonnage' => 'required',
+            'invoice_number' => 'required',
+            'price_per_tonnage' => 'required',
+            'commodity_description' => 'required',
+        ]);
+
+
+        $customer = DB::table('users_roles')
+        ->join('roles', 'users_roles.role_id', '=', 'roles.id')
+        ->join('users', 'users_roles.user_id', '=', 'users.id')
+
+        ->select('roles.slug', 'roles.name',
+        'users.id', 'users.first_name', 'users.middle_name', 'users.last_name', 'users.email')
+        ->where('users.first_name', '=',$request->user_id )->first();
+
+        $truck =  Truck::where('truck_number', $request->truck_id)->first();
+
+        $waitingCharges = ($request->waiting_charges * 150);
+
+        $totalAmount = ($request->tonnage * $request->price_per_tonnage);
+
+        $balancePayment = (($totalAmount + $waitingCharges) - $request->advance_payment);
+
+
+        $invoice->tonnage = $request->tonnage;
+        $invoice->invoice_number = $request->invoice_number;
+        $invoice->price_per_tonnage = $request->price_per_tonnage;
+        $invoice->commodity_description = $request->commodity_description;
+        $invoice->advance_payment = $request->advance_payment;
+        $invoice->balance_payment = $balancePayment;
+        $invoice->waiting_charges = $waitingCharges;
+
+
+        // $invoice->payment_received_from = $request->$payment_received_from;
+        // $invoice->payment_date = $request->$payment_date;
+        // $invoice->pod_status = $request->$pod_status;
+        // $invoice->pod_attached_shared = $request->$pod_attached_shared;
+        // $invoice->attached_file_paid = $request->$attached_file_paid;
+
+
+        // $invoice->loading_place = $request->loading_place;
+        $invoice->status = $request->status;
+        $invoice->arrived_date = $request->arrived_date;
+        $invoice->loaded_date = $request->loaded_date;
+        $invoice->dispatch_date = $request->dispatch_date;
+        $invoice->current_position = $request->current_position;
+
+        // $invoice->gprs_coordinate_point = $request->gprs_coordinate_point;
+
+        $invoice->destination = $request->destination;
+        $invoice->remarks = $request->remarks;
+        $invoice->customer_id = $customer->id;
+        $invoice->truck_id = $truck->id;
+        $invoice->system_user_id = Auth::user()->id;
+        $st = $invoice->save();
+
+        if (!$st) {
+            return redirect()->back()->with('message', 'Failed to Update invoice data');
+        } else {
+            return redirect('/view/invoices')->with('message', 'Invoice is successfully updated');
+        }
     }
 
     /**

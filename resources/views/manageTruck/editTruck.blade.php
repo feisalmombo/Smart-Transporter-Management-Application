@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Add Truck')
+@section('title', 'Edit Truck')
 
 @section('content')
 <div class="col-lg-12">
-	<h1 class="page-header">Add Company</h1>
+	<h1 class="page-header">Edit Company</h1>
 </div>
 
 <div class="row">
@@ -13,7 +13,7 @@
 		@include('msgs.success')
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Create Truck<a href="{{ url('/view/trucks') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+				Edit Truck<a href="{{ url('/view/trucks') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
 			</div>
 			<div class="panel-body">
 				<div class="container-fluid pull-left">
