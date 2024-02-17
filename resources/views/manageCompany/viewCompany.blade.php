@@ -15,14 +15,14 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 List of companies
-             
+
                 <a href="{{ url('/view/companies/create') }}" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp;Add Company</a>
-               
+
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 
-                
+
 				@if(!empty($companyDatas))
 
                 <div class="box-body">
@@ -50,7 +50,7 @@
                                 <td class="center">{{ $companyData->phone_number }}</td>
                                 <td class="center">{{ $companyData->email }}</td>
                                 <td class="center">{{ $companyData->address }}</td>
-                                
+
                                 <td>
                                     <a class="btn btn-info" data-toggle="modal" href='#{{ $companyData->id."show" }}'><i class="fa fa-bullseye" arial-hidden="true"></i></a>
                                     <div class="modal fade" id="{{ $companyData->id."show" }}">

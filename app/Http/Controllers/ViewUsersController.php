@@ -191,7 +191,7 @@ class ViewUsersController extends Controller
         $this->validate(request(), [
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
-            'useremail' => 'required|email',
+            'useremail' => 'required',
             'pnumber' => 'required|numeric|digits:10',
         ]);
 

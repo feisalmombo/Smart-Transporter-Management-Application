@@ -40,7 +40,7 @@ class CompaniesController extends Controller
             ->join('users', 'companies.user_id', '=', 'users.id')
 
             ->select('companies.id', 'companies.company_name', 'companies.tin', 'companies.vrn', 'companies.phone_number', 'companies.email', 'companies.website_link', 'companies.company_logo', 'companies.address',
-             'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.created_at')
+             'users.first_name', 'users.middle_name', 'users.last_name', 'companies.created_at')
              ->where('companies.user_id', '=', $users)->get();
 
         // return json_encode($companyData);
@@ -151,7 +151,39 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (\Auth::user()->can('edit_company')) {
+                return $next($request);
+            }
+            return redirect()->back();
+        });
+        $company = company::findOrFail($id);
+        $this->validate(request(), [
+            'company_name' => 'required|string|max:255',
+            'tin' => 'required|numeric|digits:9',
+            'phone_number' => 'required|numeric|digits:10',
+            'email' => 'required',
+            'company_logo' => 'required|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf,txt|max:2048',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $company->company_name = $request->company_name;
+        $company->tin = $request->tin;
+        $company->vrn = $request->vrn;
+        $company->phone_number = $request->phone_number;
+        $company->email = $request->email;
+        $company->website_link = $request->website_link;
+        $company->company_logo = $request->company_logo->store('companieslogo', 'public');
+        $company->address = $request->address;
+        $company->user_id = Auth::user()->id;
+        $st = $company->save();
+
+        if (!$st) {
+            return redirect()->back()->with('message', 'Failed to Update Company data');
+        } else {
+            return redirect('/view/companies')->with('message', 'Company is successfully updated');
+
+        }
     }
 
     /**
