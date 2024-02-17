@@ -37,7 +37,9 @@
                       <th>Address</th>
                       <th>Show</th>
                       <th>Edit</th>
+                      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Delete</th>
+                      @endif
                       <th>Duration</th>
                     </tr>
                     </thead>
@@ -219,6 +221,7 @@
                                         <a href="{{ url('/view/companies/'.$companyData->id.'/edit') }}" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" arial-hidden="true"></i></a>
                                 </td>
 
+                                @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                                 <td>
                                         <a href='#{{ $companyData->id }}' data-toggle="modal" type="button" class="btn btn-danger"><i class="fa fa-trash" arial-hidden="true"></i></a>
                                         <div class="modal fade" id="{{ $companyData->id }}">
@@ -246,6 +249,7 @@
                                             </div>
                                         </div>
                                 </td>
+                                @endif
 
                                 <td>{{date("F jS, Y", strtotime($companyData->created_at))}}</td>
                             </tr>
