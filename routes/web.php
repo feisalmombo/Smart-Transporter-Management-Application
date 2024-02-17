@@ -73,8 +73,14 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::resource('/view/invoices', 'FinancesController');
             Route::post('/view/invoices', 'FinancesController@store');
 
-            // VIEW ALL DETAILS ROUTE
+            // VIEW ALL INVOICES ROUTE
             Route::get('/view/all/invoices', 'FinancesController@allinvoice');
+
+            // VIEW ALL COMPANIES REGISTERED IN THE SYSTEM
+            Route::get('/view/all/companies', 'CompaniesController@allcompanies');
+
+            // VIEW ALL TRUCKS IN THE SYSTEM
+            Route::get('/view/all/trucks', 'TrucksController@alltrucks');
 
 
             //ROUTES FOR PERMISSIONS

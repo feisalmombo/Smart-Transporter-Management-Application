@@ -48,6 +48,22 @@ class TrucksController extends Controller
 
     }
 
+
+    public function alltrucks()
+    {
+        $truckData = DB::table('trucks')
+            ->join('companies', 'trucks.company_id', '=', 'companies.id')
+            ->join('users', 'trucks.user_id', '=', 'users.id')
+
+            ->select('trucks.id', 'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.tonnage', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
+            'users.first_name', 'users.middle_name', 'users.last_name', 'users.email', 'companies.company_name', 'trucks.created_at')->get();
+
+        // return json_encode($truckData);
+
+        return view('manageTruck.viewAllTruck')->with('truckDatas', $truckData);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

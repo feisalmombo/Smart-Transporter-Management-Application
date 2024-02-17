@@ -21,7 +21,7 @@
                     <!-- fix for small devices only -->
                     <div class="clearfix visible-sm-block"></div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <a href="#"  style="color: black">
+                        <a href="{{ url('/view/companies') }}"  style="color: black">
                             <div class="info-box">
                                 <span class="info-box-icon bg-green"><i class="fa fa-building"></i></span>
                                 <div class="info-box-content">
@@ -36,7 +36,7 @@
 
                     <!-- /.col -->
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <a href="#"  style="color: black">
+                        <a href="{{ url('/view/trucks') }}"  style="color: black">
                             <div class="info-box">
                                 <span class="info-box-icon bg-yellow"><i class="fa fa-truck"></i></span>
                                 <div class="info-box-content">
@@ -126,7 +126,7 @@
 
                         <!-- /.col -->
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                            <a href="#"  style="color: black">
+                            <a href="{{ url('/view/invoices') }}"  style="color: black">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-yellow"><i class="fa fa-file"></i></span>
                                     <div class="info-box-content">
@@ -245,7 +245,7 @@
                 <!-- /.col -->
 
                 <div class="col-md-3 col-sm-6 col-xs-12">
-                    <a href="#"  style="color: black">
+                    <a href="{{ url('/view/all/companies') }}"  style="color: black">
                         <div class="info-box">
                             <span class="info-box-icon bg-yellow"><i class="fa fa-building"></i></span>
                             <div class="info-box-content">
@@ -264,7 +264,7 @@
             {{--  2 row  --}}
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
-                    <a href="#"  style="color: black">
+                    <a href="{{ url('/view/all/trucks') }}"  style="color: black">
                         <div class="info-box">
                             <span class="info-box-icon bg-aqua"><i class="fa fa-truck"></i></span>
                             <div class="info-box-content">
@@ -279,7 +279,7 @@
                 <!-- /.col -->
 
                 <div class="col-md-3 col-sm-6 col-xs-12">
-                    <a href="#"  style="color: black">
+                    <a href="{{ url('/view/all/invoices') }}"  style="color: black">
                         <div class="info-box">
                             <span class="info-box-icon bg-red"><i class="fa fa-bank"></i></span>
                             <div class="info-box-content">
@@ -406,7 +406,7 @@
                         <span class="info-box-icon"><i class="fa fa-building"></i></span>
 
                         <div class="info-box-content">
-                            <a href="#" style="color: white">
+                            <a href="{{ url('/view/all/companies') }}" style="color: white">
                                 <span class="info-box-text">All Company Registered</span>
                                 <span class="info-box-number">{{ $companyregisteredCount[0]->companyregisteredCount }}</span>
 
@@ -422,7 +422,7 @@
                         <span class="info-box-icon"><i class="fa fa-truck"></i></span>
 
                         <div class="info-box-content">
-                            <a href="#" style="color: white">
+                            <a href="{{ url('/view/all/trucks') }}" style="color: white">
                                 <span class="info-box-text">All Trucks Registered</span>
                                 <span class="info-box-number">{{ $totaltrucksCount[0]->totaltrucksCount }}</span>
 
@@ -438,7 +438,7 @@
                         <span class="info-box-icon"><i class="fa fa-id-badge"></i></span>
 
                         <div class="info-box-content">
-                            <a href="#" style="color: white">
+                            <a href="{{ url('/view/all/invoices') }}" style="color: white">
                                 <span class="info-box-text">All Finance/Invoice Created</span>
                                 <span class="info-box-number">{{ $totalfinanceCount[0]->totalfinanceCount }}</span>
 

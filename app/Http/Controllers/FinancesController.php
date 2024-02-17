@@ -57,7 +57,16 @@ class FinancesController extends Controller
 
     public function allinvoice()
     {
-        //
+        $financeData = DB::table('finances')
+            ->join('users', 'finances.customer_id', '=', 'users.id')
+            ->join('trucks', 'finances.truck_id', '=', 'trucks.id')
+
+            ->select('finances.id', 'finances.tonnage', 'finances.invoice_number', 'finances.price_per_tonnage', 'finances.commodity_description', 'finances.advance_payment', 'finances.balance_payment', 'finances.waiting_charges', 'finances.loading_place', 'finances.status', 'finances.arrived_date', 'finances.loaded_date', 'finances.dispatch_date', 'finances.current_position', 'finances.destination', 'finances.remarks',
+             'users.first_name', 'users.middle_name', 'users.last_name', 'users.email',
+             'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
+             'finances.created_at')->get();
+
+        return view('manageFinance.viewAllInvoice')->with('financeDatas', $financeData);
     }
 
     /**

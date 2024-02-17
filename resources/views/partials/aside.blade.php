@@ -50,10 +50,18 @@
           </span>
         </a>
         <ul class="treeview-menu">
+
         <li>
               <a href="{{ url('/view/companies') }}"><i class="fa fa-circle-o">
-                  </i> View Companies</a>
+                  </i> Company for User</a>
         </li>
+
+        @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('director') || Auth::user()->hasRole('administrator'))
+        <li>
+            <a href="{{ url('/view/all/companies') }}"><i class="fa fa-circle-o">
+                </i>All Companies</a>
+        </li>
+        @endif
 
         <li>
             <a href="{{ url('/view/companies/create') }}"><i class="fa fa-circle-o">
@@ -75,8 +83,15 @@
         <ul class="treeview-menu">
         <li>
               <a href="{{ url('/view/trucks') }}"><i class="fa fa-circle-o">
-                  </i> View Trucks</a>
+                  </i> Truck for Userr</a>
         </li>
+
+        @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('director') || Auth::user()->hasRole('administrator'))
+        <li>
+            <a href="{{ url('/view/all/trucks') }}"><i class="fa fa-circle-o">
+                </i> All Trucks</a>
+        </li>
+        @endif
 
         <li>
             <a href="{{ url('/view/trucks/create') }}"><i class="fa fa-circle-o">
@@ -102,15 +117,13 @@
         </a>
         <ul class="treeview-menu">
 
-        @if(Auth::user()->hasRole('customer'))
-        <li>
+        {{-- <li>
               <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
-                  </i> View Invoices</a>
-        </li>
-        @endif
+                  </i> Invoices for User</a>
+        </li> --}}
 
         <li>
-            <a href="#"><i class="fa fa-circle-o">
+            <a href="{{ url('/view/all/invoices') }}"><i class="fa fa-circle-o">
                 </i> View All Invoices</a>
         </li>
 

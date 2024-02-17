@@ -51,6 +51,21 @@ class CompaniesController extends Controller
 
     }
 
+
+    public function allcompanies()
+    {
+        $companyData = DB::table('companies')
+            ->join('users', 'companies.user_id', '=', 'users.id')
+
+            ->select('companies.id', 'companies.company_name', 'companies.tin', 'companies.vrn', 'companies.phone_number', 'companies.email', 'companies.website_link', 'companies.company_logo', 'companies.address',
+             'users.first_name', 'users.middle_name', 'users.last_name', 'companies.created_at')->get();
+
+        // return json_encode($companyData);
+
+
+        return view('manageCompany.viewAllCompany')->with('companyDatas', $companyData);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
