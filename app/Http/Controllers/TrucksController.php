@@ -85,9 +85,11 @@ class TrucksController extends Controller
             ->where('companies.user_id', '=', $singleTransporter)
             ->get();
 
-        // return json_encode($company);
+        $fetchallcompany = DB::table('companies')
+        ->select('id', 'company_name')
+        ->get();
 
-        return view('manageTruck.createTruck')->with('companies', $company);
+        return view('manageTruck.createTruck')->with('companies', $company)->with('fetchallcompanies', $fetchallcompany);
     }
 
     /**

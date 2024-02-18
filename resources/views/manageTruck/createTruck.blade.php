@@ -94,6 +94,7 @@
                                             <input class="form-control" name="driver_passport_number" placeholder="eg: AB1113345" required="required">
                                         </div>
 
+                                        @if(Auth::user()->hasRole('transporter'))
                                         <div class="form-group">
                                             <label>Company: </label>
                                             <select class="form-control"  required="required" name="company_id" id="company_id">
@@ -103,6 +104,19 @@
                                                     @endforeach
                                             </select>
                                         </div>
+                                        @endif
+
+                                        @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
+                                        <div class="form-group">
+                                            <label>Company: </label>
+                                            <select class="form-control"  required="required" name="company_id" id="company_id">
+                                                <option value="">-- Select Company --</option>
+                                                    @foreach($fetchallcompanies as $fetchallcompany)
+                                                    <option value="{{ $fetchallcompany->company_name }}">{{ $fetchallcompany->company_name }}</option>
+                                                    @endforeach
+                                            </select>
+                                        </div>
+                                        @endif
 
                                     </div>
 								</form>

@@ -83,7 +83,7 @@
         <ul class="treeview-menu">
         <li>
               <a href="{{ url('/view/trucks') }}"><i class="fa fa-circle-o">
-                  </i> Truck for Userr</a>
+                  </i> Truck for User</a>
         </li>
 
         @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('director') || Auth::user()->hasRole('administrator'))

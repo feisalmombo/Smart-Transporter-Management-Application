@@ -37,7 +37,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                    <label>Company logo (Optional): </label>
+                                                    <label>Company logo: </label>
                                                     <input type="file" name="company_logo" id="company_logo" class="form-control">
                                             </div>
                                     </div>
