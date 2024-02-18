@@ -102,6 +102,25 @@
                                                   <hr/>
 
                                                   <div class="row">
+                                                    <div class="col-sm-3">
+                                                     <div class="center-block">
+                                                        <div class="form-group">
+                                                            <label>Customer Name: </label>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="col-sm-9">
+                                                       <div class="center-block">
+                                                        <div class="form-group">
+                                                            {{ $financeData->first_name ." ". $financeData->last_name}}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+
+                                                  <div class="row">
                                                         <div class="col-sm-3">
                                                          <div class="center-block">
                                                             <div class="form-group">

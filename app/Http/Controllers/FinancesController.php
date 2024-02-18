@@ -66,6 +66,8 @@ class FinancesController extends Controller
              'trucks.truck_number', 'trucks.trailer_number', 'trucks.dengla_number', 'trucks.container_number', 'trucks.driver_full_name', 'trucks.driver_phone_number', 'trucks.driver_licence_number', 'trucks.driver_passport_number', 'trucks.passport_attachment', 'trucks.licence_attachment',
              'finances.created_at')->get();
 
+            //  return json_encode($financeData);
+
         return view('manageFinance.viewAllInvoice')->with('financeDatas', $financeData);
     }
 
