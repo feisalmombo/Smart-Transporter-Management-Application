@@ -232,7 +232,37 @@
                             @endforeach
                         </tbody>
                   </table>
-                </div>
+
+                  <div class="row">
+                        <div class="pull-left col-lg-8">
+                        <div class="col-lg-2">
+                            <form action="{{url('/view-users/report/pdf/downloadPdf')}}" method="POST">
+                                        {{ csrf_field() }}
+                            <input type="text" hidden="hidden" value="<?php print base64_encode(serialize($userData)); ?>" name="tad">
+                            <div class="col-lg-9">
+                                <button class="btn btn-info" type="submit" name="submit">
+                                    <span class="fa fa-file-pdf-o" aria-hidden="true"> Download PDF</span>
+                                </button>
+                            </div>
+                            </form>
+                            <!-- <a type="button" class="btn btn-info" href="{{-- rl('/view-users/report/pdf/downloadPdf')--}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>	 -->
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+
+                            <form action="{{url('/view-users/report/excel/downloadExcel')}}" method="POST">
+                                        {{ csrf_field() }}
+                            <input type="text" hidden="hidden" value="<?php print base64_encode(serialize($userData)); ?>" name="tadas">
+                            <div class="col-lg-9">
+                                <button class="btn btn-success" type="submit" name="submit">
+                                    <span class="fa fa-file-excel-o" aria-hidden="true"> Download Excel</span>
+                                </button>
+                            </div>
+                            </form>
+                            <!-- <a type="button" class="btn btn-success" href="{{-- url('/view-users/report/excel/downloadExcel') --}}"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a> -->
+                        </div>
+                        </div>
+                    </div>
 				@else
 				<div class="alert alert-info">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

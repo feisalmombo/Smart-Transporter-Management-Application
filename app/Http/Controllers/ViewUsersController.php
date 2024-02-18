@@ -8,8 +8,8 @@ use DB;
 use App\Role;
 use App\Permission;
 use App\UserStatus;
-use Excel;
 use App\ActivityLog;
+use Excel;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class ViewUsersController extends Controller
@@ -226,7 +226,7 @@ class ViewUsersController extends Controller
         // $uid = \Auth::user()->id;
         $user = User::findOrFail($id);
         $user->delete();
-        ActivityLog::where('changetype', 'Delete User')->update(['user_id' => $uid]);
+        ActivityLog::where('task_id',$id)->where('changetype','Delete User')->update(['user_id'=>$uid]);
 
 
         $request->session()->flash('message', 'User is successfully deleted');
@@ -270,7 +270,7 @@ class ViewUsersController extends Controller
 
             // Set the spreadsheet title, creator, and description
             $excel->setTitle('User');
-            $excel->setCreator(\Auth::user()->first_name . ' ' . \Auth::user()->last_name)->setCompany('TLS Company Limited');
+            $excel->setCreator(\Auth::user()->first_name . ' ' . \Auth::user()->last_name)->setCompany('Motionstarlight Logistics Co.Ltd');
             $excel->setDescription('User file');
 
             // Build the spreadsheet, passing in the task array

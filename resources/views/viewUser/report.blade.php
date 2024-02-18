@@ -29,9 +29,9 @@
 </head>
 <body>
 	<div style="text-align: center;">
-		<img class="img-responsive"  src="../public/temp/images/logo.png" alt="sorry" width="200" >
+		{{-- <img class="img-responsive"  src="../public/temp/images/logo.png" alt="sorry" width="200" > --}}
 
-		<p style="text-align: center;"><b>UMOJASWITCH COMPANY LIMITED</b></p>
+		<p style="text-align: center;"><b>MOTIONSTARLIGHT LOGISTICS CO.LTD</b></p>
 
 		<div class="text-center" style="text-align: center">
 			<caption>USERS REPORT</caption>
