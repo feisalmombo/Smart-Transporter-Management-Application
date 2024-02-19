@@ -149,11 +149,33 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li>
-              <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
-                  </i> View Invoices</a>
-        </li>
+            <li>
+                <a href="{{ url('/view/invoices') }}"><i class="fa fa-circle-o">
+                    </i> View Invoices</a>
+            </li>
+        </ul>
       </li>
+
+    @endif
+
+
+    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('director') )
+    <li class="treeview">
+
+      <a href="#">
+        <i class="fa fa-cogs"></i>
+        <span>Log Activity Lists</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+                <a href="#"><i class="fa fa-circle-o">
+                    </i> All Activity Logs</a>
+        </li>
+       </ul>
+    </li>
 
     @endif
 
@@ -174,10 +196,10 @@
           </li>
         </ul>
       </li>
-      @endif
+    @endif
 
 
-      @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
+    @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('administrator') || Auth::user()->hasRole('superadmin'))
       <li class="treeview">
 
         <a href="#">
@@ -195,7 +217,7 @@
         </ul>
 
       </li>
-      @endif
+    @endif
     </ul>
   </section>
   <!-- /.sidebar -->
