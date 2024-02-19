@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
+use App\ActivityLog;
 
 class ActivityLogsController extends Controller
 {
@@ -13,7 +16,9 @@ class ActivityLogsController extends Controller
      */
     public function index()
     {
-        //
+        $allactivitiesLogsData = DB::table('activity_logs')->get();
+
+        return view('viewAllActivitiesLogs.allactivitieslogs')->with('allactivitiesLogsDatas', $allactivitiesLogsData);
     }
 
     /**

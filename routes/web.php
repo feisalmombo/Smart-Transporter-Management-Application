@@ -78,6 +78,11 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::resource('/view/invoices', 'FinancesController');
             Route::post('/view/invoices', 'FinancesController@store');
 
+            // Manage All Activity Logs within the system
+            Route::resource('/view/all/activities', 'ActivityLogsController');
+            Route::get('/view/all/activities', 'ActivityLogsController@index');
+            Route::post('/view/all/activities', 'ActivityLogsController@store');
+
             // VIEW ALL INVOICES ROUTE
             Route::get('/view/all/invoices', 'FinancesController@allinvoice');
 

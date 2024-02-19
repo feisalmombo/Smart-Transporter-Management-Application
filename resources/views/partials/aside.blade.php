@@ -171,7 +171,7 @@
       </a>
       <ul class="treeview-menu">
         <li>
-                <a href="#"><i class="fa fa-circle-o">
+                <a href="{{ url('/view/all/activities') }}"><i class="fa fa-circle-o">
                     </i> All Activity Logs</a>
         </li>
        </ul>
