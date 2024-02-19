@@ -64,6 +64,8 @@ Route::group(['middleware' => 'CheckUserStatus'], function () {
             Route::post('/view-users/report/pdf/{view_type}', 'ViewUsersController@report');
 			Route::post('/view-users/report/excel/{view_type}', 'ViewUsersController@downloadExcel');
 
+            Route::get('/view-users/report/downloadData/{type}', 'ViewUsersController@downloadExcel');
+
             //  Manage Company Controller
             Route::resource('/view/companies', 'CompaniesController');
             Route::post('/view/companies', 'CompaniesController@store');

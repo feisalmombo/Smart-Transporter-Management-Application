@@ -245,22 +245,24 @@
                                 </button>
                             </div>
                             </form>
-                            <!-- <a type="button" class="btn btn-info" href="{{-- rl('/view-users/report/pdf/downloadPdf')--}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>	 -->
                         </div>
-                        <div class="col-lg-1"></div>
+                        {{-- <div class="col-lg-1"></div>
                         <div class="col-lg-2">
 
                             <form action="{{url('/view-users/report/excel/downloadExcel')}}" method="POST">
                                         {{ csrf_field() }}
-                            <input type="text" hidden="hidden" value="<?php print base64_encode(serialize($userData)); ?>" name="tadas">
+                            <input type="text" hidden="hidden" value="" name="tadas">
                             <div class="col-lg-9">
                                 <button class="btn btn-success" type="submit" name="submit">
                                     <span class="fa fa-file-excel-o" aria-hidden="true"> Download Excel</span>
                                 </button>
                             </div>
                             </form>
-                            <!-- <a type="button" class="btn btn-success" href="{{-- url('/view-users/report/excel/downloadExcel') --}}"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a> -->
-                        </div>
+                        </div> --}}
+
+                        {{-- <a href="{{ url('view-users/report/downloadData/xlsx') }}"><button class="btn btn-dark">Download Excel xlsx</button></a>
+                        <a href="{{ url('downloadData/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
+                        <a href="{{ url('downloadData/csv') }}"><button class="btn btn-info">Download CSV</button></a> --}}
                         </div>
                     </div>
 				@else

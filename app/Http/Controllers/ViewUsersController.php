@@ -246,37 +246,47 @@ class ViewUsersController extends Controller
 
     public function downloadExcel(Request $request)
     {
-        $str_var = $_POST['tadas'];
-        $data = unserialize(base64_decode($str_var));
+        // $str_var = $_POST['tadas'];
+        // $data = unserialize(base64_decode($str_var));
 
-        $count = 0;
-        // Initialize the array which will be passed into the Excel
-        // generator.
-        $userArray = [];
+        // $count = 0;
+        // // Initialize the array which will be passed into the Excel
+        // // generator.
+        // $userArray = [];
 
-        // Define the Excel spreadsheet headers
-        $userArray[] = ['S/N', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'PRIVILEGE'];
+        // // Define the Excel spreadsheet headers
+        // $userArray[] = ['S/N', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'PRIVILEGE'];
 
-        // Convert each member of the returned collection into an array,
-        // and append it to the atms array.
-        foreach ($data as $datas) {
-            $count++;
-            $userArray[] = [$count, $datas->first_name, $datas->last_name, $datas->email, $datas->slug];
-        }
+        // // Convert each member of the returned collection into an array,
+        // // and append it to the atms array.
+        // foreach ($data as $datas) {
+        //     $count++;
+        //     $userArray[] = [$count, $datas->first_name, $datas->last_name, $datas->email, $datas->slug];
+        // }
 
 
-        // Generate and return the spreadsheet
-        Excel::create('User(s)', function ($excel) use ($userArray) {
+        // // Generate and return the spreadsheet
+        // Excel::create('User(s)', function ($excel) use ($userArray) {
 
-            // Set the spreadsheet title, creator, and description
-            $excel->setTitle('User');
-            $excel->setCreator(\Auth::user()->first_name . ' ' . \Auth::user()->last_name)->setCompany('Motionstarlight Logistics Co.Ltd');
-            $excel->setDescription('User file');
+        //     // Set the spreadsheet title, creator, and description
+        //     $excel->setTitle('User');
+        //     $excel->setCreator(\Auth::user()->first_name . ' ' . \Auth::user()->last_name)->setCompany('Motionstarlight Logistics Co.Ltd');
+        //     $excel->setDescription('User file');
 
-            // Build the spreadsheet, passing in the task array
-            $excel->sheet('sheet1', function ($sheet) use ($userArray) {
-                $sheet->fromArray($userArray, null, 'A1', false, false);
+        //     // Build the spreadsheet, passing in the task array
+        //     $excel->sheet('sheet1', function ($sheet) use ($userArray) {
+        //         $sheet->fromArray($userArray, null, 'A1', false, false);
+        //     });
+        // })->download('xlsx');
+
+
+        $data = User::get()->toArray();
+
+        return Excel::create('excel_data', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data);
             });
-        })->download('xlsx');
+        })->download($type);
     }
 }
