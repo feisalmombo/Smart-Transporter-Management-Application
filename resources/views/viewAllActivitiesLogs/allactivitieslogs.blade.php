@@ -32,7 +32,7 @@
                       <th>S/N</th>
                       <th>USER ID</th>
                       <th>DESCRIPTION</th>
-                      <th>TASK ID ISSUE</th>
+                      <th>ID ISSUED</th>
                       <th>CHANGED DATE</th>
                       <th>DURATION DATE UPDATED AT</th>
                     </tr>
