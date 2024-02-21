@@ -15,9 +15,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
                 All Activity Logs
-
-                <a href="#" class="col-2 pull-right" style="text-decoration: none;"><i class="fa fa-plus"></i>&nbsp; Acttivity Logs</a>
-
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
