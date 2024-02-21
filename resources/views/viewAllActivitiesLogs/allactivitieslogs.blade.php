@@ -34,7 +34,7 @@
                       <th>DESCRIPTION</th>
                       <th>ID ISSUED</th>
                       <th>CHANGED DATE</th>
-                      <th>DURATION DATE UPDATED AT</th>
+                      <th>DATE UPDATED AT</th>
                     </tr>
                     </thead>
                     <tbody>

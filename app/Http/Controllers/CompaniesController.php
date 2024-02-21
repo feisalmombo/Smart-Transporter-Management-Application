@@ -34,9 +34,6 @@ class CompaniesController extends Controller
 
         $users = Auth::user()->id;
 
-        // $companyData = DB::table('companies')->where('companies.id', '=', $users)->get();
-        // return json_encode($companyData);
-
         $companyData = DB::table('companies')
             ->join('users', 'companies.user_id', '=', 'users.id')
 
