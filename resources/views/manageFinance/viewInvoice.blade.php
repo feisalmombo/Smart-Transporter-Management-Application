@@ -51,7 +51,8 @@
                       @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('manager') || Auth::user()->hasRole('director') || Auth::user()->hasRole('superadmin'))
                       <th>Delete</th>
                       @endif
-                      <th>Duration</th>
+                      <th>Created At</th>
+                      <th>Updated At</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -290,6 +291,7 @@
                                 @endif
 
                                 <td>{{date("F jS, Y", strtotime($financeData->created_at))}}</td>
+                                <td>{{date("F jS, Y", strtotime($financeData->updated_at))}}</td>
                             </tr>
                             @endforeach
                         </tbody>
