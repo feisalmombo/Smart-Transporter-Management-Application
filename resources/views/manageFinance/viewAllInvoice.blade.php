@@ -52,7 +52,7 @@
                       <th>Delete</th>
                       @endif
                       <th>Created At</th>
-                      <th>Updated At</th>
+                      {{-- <th>Updated At</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -310,7 +310,7 @@
                                 @endif
 
                                 <td>{{date("F jS, Y", strtotime($financeData->created_at))}}</td>
-                                <td>{{date("F jS, Y", strtotime($financeData->updated_at))}}</td>
+                                {{-- <td>{{date("F jS, Y", strtotime($financeData->updated_at))}}</td> --}}
                             </tr>
                             @endforeach
                         </tbody>
